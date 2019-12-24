@@ -1,0 +1,21 @@
+.button {
+  border-radius: 4px;
+  padding: 7px 0;
+  width: 160px;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  font-family: Roboto;
+  font-size: 16px;
+  color: #FFF;
+
+
+  &.warning {
+    background-color: #FFB800;
+    &:hover {
+      background-color: #e2a300;
+    }
+  }
+}

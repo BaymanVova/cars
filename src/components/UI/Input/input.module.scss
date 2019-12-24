@@ -1,0 +1,68 @@
+@import '../../../assets/styles/_variables';
+
+.inputGroupElements {
+  margin-bottom: 15px;
+
+
+  .inputBox {
+    position: relative;
+  }
+
+  .input {
+    background: $white;
+    border: 1px solid $border-grey;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px 15px;
+    outline: none;
+
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 19px;
+    width: 320px;
+
+    &:focus {
+      border: 1px solid $border-darkgrey;
+    }
+
+    &.error {
+      border: 1px solid $error-color;
+      color: $error-color;
+      &::placeholder {
+        color: $error-color;
+      }
+    }
+  }
+  .label {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: $text-grey;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .errorText {
+    color: $error-color;
+    text-align: left;
+    display: block;
+    font-family: Roboto;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  .visibility {
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    cursor: pointer;
+    fill: $border-grey;
+
+    &:hover {
+      fill: $border-darkgrey;
+    }
+  }
+}
+

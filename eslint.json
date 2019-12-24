@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb-typescript-prettier",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "jsx-a11y",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/prefer-default-export": "warn"
+  }
+}
