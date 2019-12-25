@@ -32,18 +32,13 @@ export const Input: React.FC<Props> = props => {
     ...rest
   } = props;
 
-  const [error, setError] = useState(hasErrors);
   const [currentType, setType] = useState(type);
 
-  React.useEffect(() => {
-    setError(hasErrors);
-  }, [hasErrors]);
-
-  // TODO: тип события?
-  const onChangeHandler = (e: any): void => {
-    setError(false);
-    onChange(e);
-  };
+  // // TODO: тип события?
+  // const onChangeHandler = (e: any): void => {
+  //   setError(false);
+  //   onChange(e);
+  // };
 
   const showHide = (e: any): void => {
     const nextType = currentType === "password" ? "text" : "password";
@@ -52,7 +47,7 @@ export const Input: React.FC<Props> = props => {
 
   const getClassName = (): string => {
     let clazzName = styles.input;
-    if (error) {
+    if (hasErrors) {
       clazzName += ` ${styles.error}`;
     }
     return clazzName;
@@ -63,7 +58,7 @@ export const Input: React.FC<Props> = props => {
       <input
         id={name}
         className={getClassName()}
-        onChange={onChangeHandler}
+        onChange={onChange}
         type={currentType}
         disabled={disabled}
         value={value}
@@ -85,7 +80,7 @@ export const Input: React.FC<Props> = props => {
         {label}
       </label>
       {input()}
-      {error ? <span className={styles.errorText}>{errorText}</span> : null}
+      {hasErrors ? <span className={styles.errorText}>{errorText}</span> : null}
     </div>
   );
 };

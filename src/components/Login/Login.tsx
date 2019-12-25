@@ -2,6 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { Input } from "../UI/Input/Input";
 import styles from "./login.module.scss";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
@@ -9,6 +10,7 @@ import * as actions from "../../store/actions/auth-actions";
 
 const Login = (props: any) => {
   const { error, onAuth } = props;
+
   return (
     <div className={styles.login}>
       <h1>Вход</h1>
@@ -26,7 +28,7 @@ const Login = (props: any) => {
             .min(6, "Must be 6 characters or more")
             .required("Введите пароль")
         })}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={values => {
           onAuth(values.login, values.password);
         }}
       >
@@ -34,10 +36,7 @@ const Login = (props: any) => {
           <form onSubmit={formik.handleSubmit}>
             <Input
               name="login"
-              hasErrors={
-                !!(formik.touched.login && formik.errors.login) ||
-                error !== null
-              }
+              hasErrors={!!(formik.touched.login && formik.errors.login)}
               errorText={formik.errors.login}
               label="Логин"
               placeHolder="Введите логин"
@@ -48,10 +47,7 @@ const Login = (props: any) => {
             <Input
               name="password"
               disabled={false}
-              hasErrors={
-                !!(formik.touched.password && formik.errors.password) ||
-                error !== null
-              }
+              hasErrors={!!(formik.touched.password && formik.errors.password)}
               errorText={formik.errors.password}
               label="Пароль"
               placeHolder="Введите пароль"
@@ -68,21 +64,16 @@ const Login = (props: any) => {
           </form>
         )}
       </Formik>
-      <DefaultButton
-        className="warning"
-        disabled={false}
-        text="Выйти"
-        type="Button"
-        onClick={props.logOut}
-      />
+      <NavLink to="/signup" className={styles.link}>
+        Зарегистрироваться
+      </NavLink>
     </div>
   );
 };
 
 const mapStateToProps = (state: any) => {
-  console.log("state", state);
   return {
-    error: state.error
+    error: state.auth.error
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -90,9 +81,6 @@ const mapDispatchToProps = (dispatch: any) => {
     onAuth: (email: string, password: string) => {
       console.log(email, password);
       dispatch(actions.auth(email, password));
-    },
-    logOut: () => {
-      dispatch(actions.logout());
     }
   };
 };

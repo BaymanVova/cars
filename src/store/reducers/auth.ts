@@ -1,4 +1,5 @@
 import * as actionTypes from "../actions/auth-actions";
+import { act } from "react-dom/test-utils";
 
 interface AuthState {
   token: string | null;
@@ -7,12 +8,34 @@ interface AuthState {
   loading: boolean;
   authRedirectPath: string;
 }
-const initialState = {
+const initialState: AuthState = {
   token: null,
   userId: null,
   error: null,
   loading: false,
   authRedirectPath: "/"
+};
+
+const regStart = (state: AuthState): AuthState => {
+  return { ...state, error: null, loading: true };
+};
+
+const regSuccess = (state: AuthState, action: any): AuthState => {
+  return {
+    ...state,
+    error: null,
+    loading: false,
+    token: action.tokenId,
+    userId: action.userId
+  };
+};
+
+const regFail = (state: AuthState, action: any): AuthState => {
+  return {
+    ...state,
+    error: action.error,
+    loading: false
+  };
 };
 
 const authStart = (state: AuthState): AuthState => {
@@ -43,6 +66,12 @@ const authLogout = (state: AuthState, action: any) => {
 
 const reducer = (state: AuthState = initialState, action: any) => {
   switch (action.type) {
+    case actionTypes.REG_START:
+      return regStart(state);
+    case actionTypes.REG_SUCCESS:
+      return regSuccess(state, action);
+    case actionTypes.REG_FAIL:
+      return regFail(state, action);
     case actionTypes.AUTH_START:
       return authStart(state);
     case actionTypes.AUTH_SUCCESS:

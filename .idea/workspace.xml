@@ -2,30 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/styles/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Login/login.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/assets/visibility.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/assets/visibility_off.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/login.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/auth.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +65,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\React\cars\src\components" />
       <recent name="D:\Projects\React\cars\src" />
       <recent name="D:\Projects\React\cars" />
     </key>
@@ -116,7 +109,8 @@
       <updated>1577009936769</updated>
       <workItem from="1577009938046" duration="644000" />
       <workItem from="1577010702669" duration="481000" />
-      <workItem from="1577011193837" duration="20755000" />
+      <workItem from="1577011193837" duration="35425000" />
+      <workItem from="1577297694175" duration="3591000" />
     </task>
     <servers />
   </component>
@@ -135,5 +129,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/store/actions/auth-actions.ts</url>
+          <line>134</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
