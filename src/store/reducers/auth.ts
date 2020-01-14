@@ -1,19 +1,24 @@
 import * as actionTypes from "../actions/auth-actions";
-import { act } from "react-dom/test-utils";
 
-interface AuthState {
+export interface AuthState {
   token: string | null;
   userId: string | null;
   error: string | null;
   loading: boolean;
   authRedirectPath: string;
+  initialized: boolean;
 }
 const initialState: AuthState = {
   token: null,
   userId: null,
   error: null,
   loading: false,
-  authRedirectPath: "/"
+  authRedirectPath: "/",
+  initialized: false
+};
+
+const setInitialized = (state: AuthState): AuthState => {
+  return { ...state, initialized: true };
 };
 
 const regStart = (state: AuthState): AuthState => {
@@ -60,12 +65,14 @@ const setAuthRedirectPath = (state: AuthState, action: any): AuthState => {
   return { ...state, authRedirectPath: action.path };
 };
 
-const authLogout = (state: AuthState, action: any) => {
+const authLogout = (state: AuthState) => {
   return { ...state, token: null, userId: null };
 };
 
-const reducer = (state: AuthState = initialState, action: any) => {
+const reducer = (state: AuthState = initialState, action: any): AuthState => {
   switch (action.type) {
+    case actionTypes.SET_INIT:
+      return setInitialized(state);
     case actionTypes.REG_START:
       return regStart(state);
     case actionTypes.REG_SUCCESS:
@@ -79,7 +86,7 @@ const reducer = (state: AuthState = initialState, action: any) => {
     case actionTypes.AUTH_FAIL:
       return authFail(state, action);
     case actionTypes.AUTH_LOGOUT:
-      return authLogout(state, action);
+      return authLogout(state);
     case actionTypes.SET_AUTH_REDIRECT_PATH:
       return setAuthRedirectPath(state, action);
     default:

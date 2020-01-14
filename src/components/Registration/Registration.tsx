@@ -8,12 +8,21 @@ import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import * as actions from "../../store/actions/auth-actions";
 import styles from "../Login/login.module.scss";
 
-const Registration = (props: any) => {
+interface Props {
+  error: string | null;
+  onRegistration: (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ) => void;
+}
+const Registration: React.FC<Props> = props => {
   const { error, onRegistration } = props;
   return (
     <div className={styles.login}>
       <h1>Регистрация</h1>
-      {error && <p>{error.message}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       <Formik
         initialValues={{
           firstName: "",
@@ -30,13 +39,14 @@ const Registration = (props: any) => {
             .min(2, "Фамилия должна быть больше двух символов")
             .required("Укажите фамилию"),
           login: Yup.string()
-            .max(15, "Must be 15 characters or less")
-            .required("Введите логин"),
+            .required("Введите логин")
+            .email("Введите правильный почтовый адрес"),
           password: Yup.string()
             .min(6, "Must be 6 characters or more")
             .required("Введите пароль"),
           confirmPassword: Yup.string()
             .min(6, "Must be 6 characters or more")
+            .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
             .required("Повторите пароль")
         })}
         onSubmit={values => {
@@ -77,7 +87,7 @@ const Registration = (props: any) => {
               hasErrors={!!(formik.touched.login && formik.errors.login)}
               errorText={formik.errors.login}
               label="Логин"
-              placeHolder="Введите логин"
+              placeHolder="Введите e-mail"
               type="text"
               value={formik.values.login}
               {...formik.getFieldProps("login")}
@@ -110,12 +120,7 @@ const Registration = (props: any) => {
               {...formik.getFieldProps("confirmPassword")}
             />
 
-            <DefaultButton
-              className="warning"
-              disabled={false}
-              type="submit"
-              text="Войти"
-            />
+            <DefaultButton className="warning" disabled={false} text="Войти" />
           </form>
         )}
       </Formik>

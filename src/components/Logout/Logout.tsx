@@ -3,10 +3,15 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/auth-actions";
 
-const Logout = (props: any) => {
+interface Props {
+  onLogout: () => void;
+}
+const Logout: React.FC<Props> = props => {
+  const { onLogout } = props;
+
   useEffect(() => {
-    props.onLogout();
-  });
+    onLogout();
+  }, []);
   return <Redirect to="/" />;
 };
 

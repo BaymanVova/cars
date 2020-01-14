@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
+    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="added baseRequest, some TS.">
+      <change afterPath="$PROJECT_DIR$/src/assets/utils/authAPIRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/utils/authRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/utils/baseRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Content/Content.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Content/content.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/interfases/mapState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/_variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/login.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/auth.ts" afterDir="false" />
     </list>
@@ -28,14 +34,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1VKm0LI8AZCoIvCQHZXUNwUA02R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -60,7 +72,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\Projects\React\cars\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="D:\Projects\React\cars\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -110,7 +122,12 @@
       <workItem from="1577009938046" duration="644000" />
       <workItem from="1577010702669" duration="481000" />
       <workItem from="1577011193837" duration="35425000" />
-      <workItem from="1577297694175" duration="3591000" />
+      <workItem from="1577297694175" duration="11796000" />
+      <workItem from="1577732145505" duration="955000" />
+      <workItem from="1578154633312" duration="688000" />
+      <workItem from="1578674013158" duration="599000" />
+      <workItem from="1578674947748" duration="5000" />
+      <workItem from="1578836921403" duration="12535000" />
     </task>
     <servers />
   </component>
@@ -130,15 +147,8 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/store/actions/auth-actions.ts</url>
-          <line>134</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added baseRequest, some TS." />
+    <option name="LAST_COMMIT_MESSAGE" value="added baseRequest, some TS." />
   </component>
 </project>

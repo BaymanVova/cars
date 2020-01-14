@@ -7,14 +7,20 @@ import { Input } from "../UI/Input/Input";
 import styles from "./login.module.scss";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import * as actions from "../../store/actions/auth-actions";
+import { MapState } from "../../store/interfases/mapState";
 
-const Login = (props: any) => {
+interface Props {
+  error: string | null;
+  onAuth: (email: string, password: string) => void;
+}
+
+const Login: React.FC<Props> = props => {
   const { error, onAuth } = props;
 
   return (
     <div className={styles.login}>
       <h1>Вход</h1>
-      {error && <p>{error.message}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       <Formik
         initialValues={{
           login: "",
@@ -22,7 +28,7 @@ const Login = (props: any) => {
         }}
         validationSchema={Yup.object({
           login: Yup.string()
-            .max(15, "Must be 15 characters or less")
+            .email("Введите правильный почтовый адрес")
             .required("Введите логин"),
           password: Yup.string()
             .min(6, "Must be 6 characters or more")
@@ -55,12 +61,7 @@ const Login = (props: any) => {
               value={formik.values.password}
               {...formik.getFieldProps("password")}
             />
-            <DefaultButton
-              className="warning"
-              disabled={false}
-              type="submit"
-              text="Войти"
-            />
+            <DefaultButton className="warning" disabled={false} text="Войти" />
           </form>
         )}
       </Formik>
@@ -71,9 +72,9 @@ const Login = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = ({ auth }: MapState) => {
   return {
-    error: state.auth.error
+    error: auth.error
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
