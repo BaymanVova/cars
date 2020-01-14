@@ -7,7 +7,7 @@ export const Properties = () => {
     { id: 2, name: "Год выпуска", type: "String" },
     { id: 3, name: "Количество колёс", type: "Number" }
   ];
-  const [property, setProperty] = useState(tempProperty);
+  const [property, setProperty] = useState([...tempProperty]);
 
   const sortProperty = (key: string) => {
     console.log(tempProperty);
@@ -21,6 +21,7 @@ export const Properties = () => {
       return 0;
     });
     setProperty(tempProperty);
+    console.log(property);
   };
   return (
     <>
