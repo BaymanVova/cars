@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="added Sorted Table (without Redux and TS)">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Table/Table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Table/TableItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Table/table.module.scss" afterDir="false" />
+    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/login.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +107,7 @@
       <workItem from="1578154633312" duration="688000" />
       <workItem from="1578674013158" duration="599000" />
       <workItem from="1578674947748" duration="5000" />
-      <workItem from="1578836921403" duration="21888000" />
+      <workItem from="1578836921403" duration="21935000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -128,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579026791112</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added Sorted Table (without Redux and TS)">
+      <created>1579037318137</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579037318137</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

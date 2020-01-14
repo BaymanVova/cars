@@ -29,7 +29,6 @@ export const TableBody: React.FC<Props> = props => {
               </td>
             )}
           </tr>
-          </tr>
         );
       })}
     </tbody>
