@@ -1,0 +1,32 @@
+@import "../../../assets/styles/_variables";
+
+.table {
+  width: 100%;
+  th {
+    cursor: pointer;
+    color: $text-grey;
+    font-family: $font;
+    font-size: 16px;
+    line-height: 19px;
+    opacity: 0.8;
+
+    &.active, &:not(.unsortable):hover{
+      color: $black;
+    }
+
+    &.unsortable {
+      cursor: auto;
+    }
+  }
+  td, th {
+    text-align: left;
+    padding: 15px 0;
+    border-bottom: 1px solid $border-grey;
+  }
+  td {
+    font-size: 14px;
+  }
+  td:first-child, th:first-child {
+    padding-left: 70px;
+  }
+}
