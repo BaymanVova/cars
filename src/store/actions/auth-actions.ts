@@ -127,9 +127,7 @@ export const registarion = (
     password,
     returnSecureToken: true
   };
-  const authApi = new AuthAPIRequest();
-  authApi
-    .signIn(regData)
+  axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo',regData)
     .then(response => {
       const expirationDate: Date = new Date(
         new Date().getTime() + response.data.expiresIn * 1000
