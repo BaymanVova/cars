@@ -8,18 +8,31 @@ interface Key {
   name: string;
 }
 interface Props {
-  values: any;
+  values: Object[];
   keys: Key[];
-  onClick: (key: string) => void;
   hasControl: boolean;
+  orderBy: string;
+  isDesc: boolean;
+  onClick: (key: string) => void;
 }
 
 export const Table: React.FC<Props> = props => {
-  const { values, keys, onClick, hasControl } = props;
+  const { values, keys, onClick, hasControl, orderBy, isDesc } = props;
   return (
     <table className={styles.table}>
-      <TableHeader keys={keys} onClick={onClick} hasControl={hasControl} />
-      <TableBody values={values} keys={keys} hasControl={hasControl} />
+      <TableHeader
+        keys={keys}
+        onClick={onClick}
+        hasControl={hasControl}
+        orderBy={orderBy}
+        isDesc={isDesc}
+      />
+      <TableBody
+        values={values}
+        keys={keys}
+        hasControl={hasControl}
+        addLink={true}
+      />
     </table>
   );
 };

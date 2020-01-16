@@ -1,5 +1,6 @@
 @import "../../../assets/styles/_variables";
 
+
 .table {
   width: 100%;
   th {
@@ -10,8 +11,25 @@
     line-height: 19px;
     opacity: 0.8;
 
-    &.active, &:not(.unsortable):hover{
+    .active, &:not(.unsortable):hover{
       color: $black;
+      position: relative;
+      &.desc:before, &.asc:before{
+        content: " ";
+        background: url(assets/orderIcon.svg) no-repeat center;
+        position: absolute;
+        width: 15px;
+        height: 19px;
+        left: -20px;
+      }
+      &.desc:before {
+        transform: rotate(0deg);
+        transition: transform 0.3s;
+      }
+      &.asc:before {
+        transform: rotate(180deg);
+        transition: transform 0.3s;
+      }
     }
 
     &.unsortable {

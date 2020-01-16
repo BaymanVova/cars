@@ -6,12 +6,14 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import authReducer from "./store/reducers/auth";
+import { reducer as authReducer } from "./store/reducers/auth-reducers";
+import { reducer as carsReducer } from "./store/reducers/car-reducers";
 
 /* eslint-disable no-underscore-dangle */
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  cars: carsReducer
 });
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -2,7 +2,6 @@ import axios from "axios";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { AuthRequest } from "../../assets/utils/authRequest";
-import { AuthAPIRequest } from "../../assets/utils/authAPIRequest";
 
 export const AUTH_START = "AUTH_START";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
@@ -127,7 +126,11 @@ export const registarion = (
     password,
     returnSecureToken: true
   };
-  axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo',regData)
+  axios
+    .post(
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
+      regData
+    )
     .then(response => {
       const expirationDate: Date = new Date(
         new Date().getTime() + response.data.expiresIn * 1000

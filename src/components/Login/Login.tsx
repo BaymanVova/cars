@@ -7,7 +7,7 @@ import { Input } from "../UI/Input/Input";
 import styles from "./login.module.scss";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import * as actions from "../../store/actions/auth-actions";
-import { MapState } from "../../store/interfases/mapState";
+import { MapState } from "../../store/interfaces/mapState";
 
 interface Props {
   error: string | null;

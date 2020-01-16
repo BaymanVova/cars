@@ -7,17 +7,34 @@ interface Key {
 }
 interface Props {
   keys: Key[];
-  onClick: (key: string) => void;
   hasControl: boolean;
+  orderBy: string;
+  isDesc: boolean;
+  onClick: (key: string) => void;
 }
 export const TableHeader: React.FC<Props> = props => {
-  const { keys, onClick, hasControl } = props;
+  const getClassName = (isDesc: boolean): string => {
+    let clazzName = styles.active;
+    clazzName += isDesc ? ` ${styles.desc}` : ` ${styles.asc}`;
+    return clazzName;
+  };
+
+  const { keys, onClick, hasControl, orderBy, isDesc } = props;
   let header: JSX.Element[] = keys.map((header: Key) => {
-    return (
-      <th key={header.key}>
-        <span onClick={() => onClick(header.key)}>{header.name}</span>
-      </th>
+    let headerText: JSX.Element = (
+      <span onClick={() => onClick(header.key)}>{header.name}</span>
     );
+    if (header.key === orderBy) {
+      headerText = (
+        <span
+          onClick={() => onClick(header.key)}
+          className={getClassName(isDesc)}
+        >
+          {header.name}
+        </span>
+      );
+    }
+    return <th key={header.key}>{headerText}</th>;
   });
   return (
     <thead>

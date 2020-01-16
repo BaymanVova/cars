@@ -5,7 +5,6 @@ export interface AuthState {
   userId: string | null;
   error: string | null;
   loading: boolean;
-  authRedirectPath: string;
   initialized: boolean;
 }
 const initialState: AuthState = {
@@ -13,7 +12,6 @@ const initialState: AuthState = {
   userId: null,
   error: null,
   loading: false,
-  authRedirectPath: "/",
   initialized: false
 };
 
@@ -61,15 +59,15 @@ const authSuccess = (state: AuthState, action: any): AuthState => {
 const authFail = (state: AuthState, action: any): AuthState => {
   return { ...state, error: action.error, loading: false };
 };
-const setAuthRedirectPath = (state: AuthState, action: any): AuthState => {
-  return { ...state, authRedirectPath: action.path };
-};
 
 const authLogout = (state: AuthState) => {
   return { ...state, token: null, userId: null };
 };
 
-const reducer = (state: AuthState = initialState, action: any): AuthState => {
+export const reducer = (
+  state: AuthState = initialState,
+  action: any
+): AuthState => {
   switch (action.type) {
     case actionTypes.SET_INIT:
       return setInitialized(state);
@@ -87,11 +85,7 @@ const reducer = (state: AuthState = initialState, action: any): AuthState => {
       return authFail(state, action);
     case actionTypes.AUTH_LOGOUT:
       return authLogout(state);
-    case actionTypes.SET_AUTH_REDIRECT_PATH:
-      return setAuthRedirectPath(state, action);
     default:
       return state;
   }
 };
-
-export default reducer;

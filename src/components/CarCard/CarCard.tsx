@@ -1,42 +1,25 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import { Table } from "../common/Table/Table";
+import * as actions from "../../store/actions/car-actions";
+import { connect } from "react-redux";
+import { MapState } from "../../store/interfaces/mapState";
+import { CarInfo } from "../../store/reducers/car-reducers";
 
-export const CarCard = () => {
-  let temp: any[] = [];
-  const [data, setData] = useState();
-
+interface Props {
+  cars: CarInfo[] | null;
+  orderBy: string;
+  isDesc: boolean;
+  sortCars: (key: string) => void;
+  getCars: () => void;
+}
+const CarCard: React.FC<Props> = props => {
+  const { cars, sortCars, getCars, orderBy, isDesc } = props;
   useEffect(() => {
     getCars();
   }, []);
 
-  const getCars = () => {
-    axios
-      .get("https://caronline-f2f9e.firebaseio.com/cars.json")
-      .then(response => {
-        for (let key in response.data) {
-          temp.push(response.data[key]);
-        }
-        setData(temp);
-      });
-  };
-
-  const sort = (key: string) => {
-    temp = [...data];
-    temp.sort((a, b) => {
-      if (a[key] > b[key]) {
-        return 1;
-      }
-      if (a[key] < b[key]) {
-        return -1;
-      }
-      return 0;
-    });
-    setData(temp);
-  };
-
-  if (data) {
+  if (cars) {
     return (
       <>
         <DefaultButton
@@ -48,17 +31,38 @@ export const CarCard = () => {
           text={"Добавить товар"}
         />
         <Table
-          values={data}
+          values={cars}
           keys={[
             { key: "name", name: "Перечень товаров" },
             { key: "price", name: "Стоимость" },
             { key: "date", name: "Дата изменения" }
           ]}
-          onClick={(key: string) => sort(key)}
+          onClick={(key: string) => sortCars(key)}
           hasControl
+          orderBy={orderBy}
+          isDesc={isDesc}
         />
       </>
     );
   }
-  return null;
+  // TODO: добавить спинер
+  return <div>спинер</div>;
 };
+const mapStateToProps = ({ cars }: MapState) => {
+  return {
+    cars: cars.cars,
+    orderBy: cars.orderBy,
+    isDesc: cars.isDesc
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getCars: () => {
+      dispatch(actions.getCars());
+    },
+    sortCars: (key: string) => {
+      dispatch(actions.sort(key));
+    }
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CarCard);

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
+    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="added Redux for List of cars">
+      <change afterPath="$PROJECT_DIR$/src/assets/utils/sortTable.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Table/TableLinkItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Table/assets/orderIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/car-actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/car-reducers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarCard/CarCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/table.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth-actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/interfases/mapState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/interfaces/mapState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/auth-reducers.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,12 +27,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="cars" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="SCSS File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -57,6 +76,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\React\cars\src\components\common\Table\assets" />
+      <recent name="D:\Projects\React\cars\src\assets\images" />
       <recent name="D:\Projects\React\cars\src\components" />
       <recent name="D:\Projects\React\cars\src" />
       <recent name="D:\Projects\React\cars" />
@@ -107,7 +128,8 @@
       <workItem from="1578154633312" duration="688000" />
       <workItem from="1578674013158" duration="599000" />
       <workItem from="1578674947748" duration="5000" />
-      <workItem from="1578836921403" duration="21935000" />
+      <workItem from="1578836921403" duration="25061000" />
+      <workItem from="1579197084823" duration="11247000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -123,7 +145,21 @@
       <option name="project" value="LOCAL" />
       <updated>1579037318137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added Sorted Table (without Redux and TS)">
+      <created>1579037339395</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579037339395</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix sort Property">
+      <created>1579037732628</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579037732628</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +181,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added baseRequest, some TS." />
     <MESSAGE value="added Sorted Table (without Redux and TS)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Sorted Table (without Redux and TS)" />
+    <MESSAGE value="fix sort Property" />
+    <MESSAGE value="added Redux for List of cars" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Redux for List of cars" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/CarCard/CarCard.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
