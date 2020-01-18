@@ -3,14 +3,14 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "./store/actions/auth-actions";
 import Login from "./components/Login/Login";
-import CarCard from "./components/CarCard/CarCard";
-
+import CarCard from "./components/CarPage/CarCard/CarCard";
 import styles from "./App.module.scss";
 import { Navbar } from "./components/Navbar/Navbar";
 import Registration from "./components/Registration/Registration";
 import { Properties } from "./components/Properties/Properties";
 import Logout from "./components/Logout/Logout";
 import { Content } from "./components/common/Content/Content";
+import CarInfo from "./components/CarPage/CarDetail/CarDetail";
 
 const App: React.FC = (props: any) => {
   useEffect(() => props.onTryAutoSignup(), []);
@@ -23,11 +23,11 @@ const App: React.FC = (props: any) => {
           <Navbar />
           <Content>
             <Switch>
-              <Route path="/" exact component={CarCard} />
               <Route path="/property" exact component={Properties} />
               <Route path="/logout" component={Logout} />
-              <Route path={"/car"} component={CarCard} />
-              <Redirect to="/" />
+              <Route path={"/car"} exact component={CarCard} />
+              <Route path={"/car/:id"} component={CarInfo} />
+              <Redirect to="/car" />
             </Switch>
           </Content>
         </div>

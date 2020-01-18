@@ -21,9 +21,7 @@ export const TableHeader: React.FC<Props> = props => {
 
   const { keys, onClick, hasControl, orderBy, isDesc } = props;
   let header: JSX.Element[] = keys.map((header: Key) => {
-    let headerText: JSX.Element = (
-      <span onClick={() => onClick(header.key)}>{header.name}</span>
-    );
+    let headerText: JSX.Element = <span>{header.name}</span>;
     if (header.key === orderBy) {
       headerText = (
         <span
@@ -34,7 +32,11 @@ export const TableHeader: React.FC<Props> = props => {
         </span>
       );
     }
-    return <th key={header.key}>{headerText}</th>;
+    return (
+      <th onClick={() => onClick(header.key)} key={header.key}>
+        {headerText}
+      </th>
+    );
   });
   return (
     <thead>

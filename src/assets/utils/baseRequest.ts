@@ -5,7 +5,7 @@ export class BaseRequest {
     return Promise.reject(error);
   };
 
-  protected async post(url: string, config: any): Promise<any> {
+  protected async post(url: string, config?: any): Promise<any> {
     try {
       const response = await axios.post(url, config);
 
@@ -23,7 +23,7 @@ export class BaseRequest {
     }
   }
 
-  protected async get(url: string, config: any): Promise<any> {
+  protected async get(url: string, config?: any): Promise<any> {
     try {
       const response = await axios.get(url, config);
 

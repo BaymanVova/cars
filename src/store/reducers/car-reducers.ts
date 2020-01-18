@@ -19,6 +19,7 @@ export interface CarInfo {
 
 export interface CarState {
   cars: CarInfo[] | null;
+  currentCar: CarInfo | null;
   isLoading: boolean;
   error: string;
   orderBy: string;
@@ -27,6 +28,7 @@ export interface CarState {
 
 const initialState: CarState = {
   cars: null,
+  currentCar: null,
   isLoading: false,
   error: "",
   orderBy: "",
@@ -50,6 +52,11 @@ const getCarsFail = (state: CarState, action: any): CarState => {
   return { ...state, isLoading: false, error: action.payload.error };
 };
 
+// Так как FireBase не возвращает (или я не разобрался) данные по ID, я просто ищу среди всего списка
+const getCarById = (state: CarState, action: any): CarState => {
+  const curCar = state.cars?.find(_ => _.id == action.payload.id) || null;
+  return { ...state, currentCar: curCar };
+};
 const sort = (state: CarState, action: any): CarState => {
   const newOrder: boolean =
     state.orderBy === action.payload.key ? !state.isDesc : true;
@@ -67,6 +74,10 @@ const sort = (state: CarState, action: any): CarState => {
   };
 };
 
+const ClearCurrentCar = (state: CarState): CarState => {
+  return { ...state, currentCar: null };
+};
+
 export const reducer = (
   state: CarState = initialState,
   action: any
@@ -78,6 +89,10 @@ export const reducer = (
       return getCarsSuccess(state, action);
     case actionTypes.GET_CARS_FAIL:
       return getCarsFail(state, action);
+    case actionTypes.GET_CAR_BY_ID:
+      return getCarById(state, action);
+    case actionTypes.CLEAR_CURRENT_CAR:
+      return ClearCurrentCar(state);
     case actionTypes.SORT_CARS:
       return sort(state, action);
     default:

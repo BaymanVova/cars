@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
-import { Table } from "../common/Table/Table";
-import * as actions from "../../store/actions/car-actions";
+import DefaultButton from "../../UI/DefaultButton/DefaultButton";
+import { Table } from "../../common/Table/Table";
+import * as actions from "../../../store/actions/car-actions";
 import { connect } from "react-redux";
-import { MapState } from "../../store/interfaces/mapState";
-import { CarInfo } from "../../store/reducers/car-reducers";
+import { MapState } from "../../../store/interfaces/mapState";
+import { CarInfo } from "../../../store/reducers/car-reducers";
+import styles from "../car.module.scss";
 
 interface Props {
   cars: CarInfo[] | null;
@@ -22,14 +23,16 @@ const CarCard: React.FC<Props> = props => {
   if (cars) {
     return (
       <>
-        <DefaultButton
-          className={"warning"}
-          disabled={false}
-          onClick={(): void => {
-            alert("Soon");
-          }}
-          text={"Добавить товар"}
-        />
+        <div className={`${styles.topMenu} ${styles.right}`}>
+          <DefaultButton
+            className={"warning"}
+            disabled={false}
+            onClick={(): void => {
+              alert("Soon");
+            }}
+            text={"Добавить товар"}
+          />
+        </div>
         <Table
           values={cars}
           keys={[
@@ -41,6 +44,9 @@ const CarCard: React.FC<Props> = props => {
           hasControl
           orderBy={orderBy}
           isDesc={isDesc}
+          hasLink={true}
+          linkKey={"name"}
+          linkKeyValue={"id"}
         />
       </>
     );

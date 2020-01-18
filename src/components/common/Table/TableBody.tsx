@@ -11,9 +11,11 @@ interface Props {
   keys: Key[];
   hasControl: boolean;
   addLink: boolean;
+  linkKey?: string;
+  linkKeyValue?: string;
 }
 export const TableBody: React.FC<Props> = props => {
-  const { values, keys, hasControl } = props;
+  const { values, keys, hasControl, addLink, linkKey, linkKeyValue } = props;
   return (
     <tbody>
       {values.map((currentValue: any) => {
@@ -21,14 +23,16 @@ export const TableBody: React.FC<Props> = props => {
           <tr key={currentValue.id}>
             {keys.map((value: Key) => {
               // TODO: переделать проверку
-              if (value.key === "name") {
-                return (
-                  <TableLinkItem
-                    value={currentValue[value.key]}
-                    key={value.key}
-                    link={"car/" + currentValue["id"]}
-                  />
-                );
+              if (addLink && linkKey) {
+                if (value.key === linkKey) {
+                  return (
+                    <TableLinkItem
+                      value={currentValue[value.key]}
+                      key={value.key}
+                      link={currentValue[linkKeyValue!]}
+                    />
+                  );
+                }
               }
               return (
                 <TableItem value={currentValue[value.key]} key={value.key} />

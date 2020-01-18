@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <nav className={styles.navigation}>
       <div>
-        <NavItem path="/">Листинг товаров</NavItem>
+        <NavItem path="/car">Листинг товаров</NavItem>
         <NavItem path="/property">Листинг проперти</NavItem>
       </div>
       <div>

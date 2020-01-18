@@ -10,10 +10,10 @@ export class AuthAPIRequest extends BaseRequest {
 
   signIn(signInRequest: AuthRequest): Promise<any> {
     return this.post(
-      "/https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
       signInRequest
     )
-      .then(response => response.json())
+      .then(response => response.data)
       .catch(BaseRequest.handleError);
   }
 
@@ -22,7 +22,7 @@ export class AuthAPIRequest extends BaseRequest {
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
       regRequest
     )
-      .then(response => response.json())
+      .then(response => response.data)
       .catch(BaseRequest.handleError);
   }
 }

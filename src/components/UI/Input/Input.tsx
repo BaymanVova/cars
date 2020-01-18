@@ -13,8 +13,8 @@ interface Props {
   label: string;
   placeHolder?: string;
   type: string;
-  value: string;
-  onChange: (e: any) => void;
+  value: string | string[];
+  onChange?: (e: any) => void;
 }
 
 export const Input: React.FC<Props> = props => {
@@ -27,8 +27,8 @@ export const Input: React.FC<Props> = props => {
     placeHolder = "",
     label = "",
     type = "text",
-    value = "",
-    onChange,
+    value,
+    onChange = () => {},
     ...rest
   } = props;
 
@@ -40,7 +40,7 @@ export const Input: React.FC<Props> = props => {
   //   onChange(e);
   // };
 
-  const showHide = (e: any): void => {
+  const showHide = (): void => {
     const nextType = currentType === "password" ? "text" : "password";
     setType(nextType);
   };
@@ -53,25 +53,43 @@ export const Input: React.FC<Props> = props => {
     return clazzName;
   };
 
-  const input = () => (
-    <div className={styles.inputBox}>
-      <input
-        id={name}
-        className={getClassName()}
-        onChange={onChange}
-        type={currentType}
-        disabled={disabled}
-        value={value}
-        placeholder={placeHolder}
-        {...rest}
-      />
-      {type === "password" && (
-        <div className={styles.visibility} onClick={showHide} role="button">
-          {currentType === "password" ? <VisibleIcon /> : <HiddenIcon />}
+  const input = () => {
+    if (type === "Dropdown") {
+      let newValue: string[] = [];
+      if (Array.isArray(value)) {
+        newValue = [...value];
+      } else {
+        newValue.push(value);
+      }
+      return (
+        <select name="11" id="22">
+          {newValue.map((item: string) => (
+            <option key={item}> {item} </option>
+          ))}
+        </select>
+      );
+    } else {
+      return (
+        <div className={styles.inputBox}>
+          <input
+            id={name}
+            className={getClassName()}
+            onChange={onChange}
+            type={currentType}
+            disabled={disabled}
+            value={value}
+            placeholder={placeHolder}
+            {...rest}
+          />
+          {type === "password" && (
+            <div className={styles.visibility} onClick={showHide} role="button">
+              {currentType === "password" ? <VisibleIcon /> : <HiddenIcon />}
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  );
+      );
+    }
+  };
 
   console.log("render");
   return (

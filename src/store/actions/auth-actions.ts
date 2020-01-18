@@ -1,7 +1,7 @@
-import axios from "axios";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { AuthRequest } from "../../assets/utils/authRequest";
+import { AuthAPIRequest } from "../../assets/utils/authAPIRequest";
 
 export const AUTH_START = "AUTH_START";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
@@ -91,21 +91,19 @@ export const auth = (
       password,
       returnSecureToken: true
     };
-    axios
-      .post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
-        authData
-      )
+    const authAPI: AuthAPIRequest = new AuthAPIRequest();
+    authAPI
+      .signIn(authData)
       .then(response => {
         console.log(response);
         const expirationDate: Date = new Date(
-          new Date().getTime() + response.data.expiresIn * 1000
+          new Date().getTime() + response.expiresIn * 1000
         );
-        localStorage.setItem("token", response.data.idToken);
+        localStorage.setItem("token", response.idToken);
         localStorage.setItem("expirationDate", expirationDate.toString());
-        localStorage.setItem("userId", response.data.localId);
-        dispatch(authSuccess(response.data.idToken, response.data.localId));
-        dispatch(checkAuthTimeout(response.data.expiresIn * 1000));
+        localStorage.setItem("userId", response.localId);
+        dispatch(authSuccess(response.idToken, response.localId));
+        dispatch(checkAuthTimeout(response.expiresIn * 1000));
       })
       .catch((error: any) => {
         console.log(error);
@@ -126,20 +124,18 @@ export const registarion = (
     password,
     returnSecureToken: true
   };
-  axios
-    .post(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBr234HzNifT_aIEYwijpcapRmjZkn_iUo",
-      regData
-    )
+  const authAPI: AuthAPIRequest = new AuthAPIRequest();
+  authAPI
+    .registration(regData)
     .then(response => {
       const expirationDate: Date = new Date(
-        new Date().getTime() + response.data.expiresIn * 1000
+        new Date().getTime() + response.expiresIn * 1000
       );
-      localStorage.setItem("token", response.data.idToken);
+      localStorage.setItem("token", response.idToken);
       localStorage.setItem("expirationDate", expirationDate.toString());
-      localStorage.setItem("userId", response.data.localId);
-      dispatch(regSuccess(response.data.idToken, response.data.localId));
-      dispatch(checkAuthTimeout(response.data.expiresIn * 1000));
+      localStorage.setItem("userId", response.localId);
+      dispatch(regSuccess(response.idToken, response.localId));
+      dispatch(checkAuthTimeout(response.expiresIn * 1000));
     })
     .catch((error: any) => {
       console.log(error);

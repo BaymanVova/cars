@@ -52,7 +52,6 @@ const Login: React.FC<Props> = props => {
             />
             <Input
               name="password"
-              disabled={false}
               hasErrors={!!(formik.touched.password && formik.errors.password)}
               errorText={formik.errors.password}
               label="Пароль"
@@ -61,7 +60,7 @@ const Login: React.FC<Props> = props => {
               value={formik.values.password}
               {...formik.getFieldProps("password")}
             />
-            <DefaultButton className="warning" disabled={false} text="Войти" />
+            <DefaultButton className="warning" text="Войти" />
           </form>
         )}
       </Formik>

@@ -33,6 +33,7 @@ export const Properties = () => {
         ]}
         onClick={(key: string) => sortProperty(key)}
         hasControl
+        hasLink={false}
         orderBy={"name"}
         isDesc={true}
       />

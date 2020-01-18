@@ -3,14 +3,14 @@ import styles from "./DefaultButton.module.scss";
 
 interface Props {
   className: string;
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
   text: string;
 }
 
 // TODO: прописать интерфейс пропсов
 const DefaultButton: React.FC<Props> = props => {
-  const { className, disabled, onClick, text } = props;
+  const { className, disabled = false, onClick, text } = props;
 
   const getClassName = (): string => {
     let clazzName = styles.button;

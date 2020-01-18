@@ -1,0 +1,120 @@
+@import "../../assets/styles/_variables.scss";
+
+a {
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  color: $link-color;
+  cursor: pointer;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.topMenu {
+  padding: 0 $big-padding;
+  display: flex;
+
+  &.right {
+    justify-content: flex-end;
+  }
+ }
+
+.carDetail {
+  display: flex;
+  flex-direction: column;
+  margin: 40px $big-padding $big-padding;
+  padding-top: 20px;
+  border-top: 1px solid #E0E0E0;
+  img{
+    max-width: 100%;
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 28px;
+    color: $black;
+    font-weight: normal;
+    margin: 0 0 40px;
+  }
+  article{
+    font-size: 16px;
+    line-height: 19px;
+    color: $text-grey;
+  }
+
+  .mainInfo {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    grid-gap: 30px;
+    margin-bottom: 40px;
+
+
+    .photo {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+  }
+  .property{
+    margin-bottom: 25px;
+
+    .propertyHeader{
+      font-size: 16px;
+      line-height: 19px;
+      color: $black;
+      margin: 0 0 12px;
+    }
+    .propertyData{
+      font-size: 14px;
+      line-height: 16px;
+      color: $text-grey;
+    }
+    .price {
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 26px;
+      color: $black;
+      margin: 0;
+    }
+  }
+  .buyBlock {
+    position: relative;
+    div {
+      position: absolute;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      top: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .topMenu{
+    padding: 0 $mobile-big-padding;
+  }
+  .carDetail {
+    margin: $mobile-big-padding $mobile-big-padding 0;
+    .mainInfo {
+      display: flex;
+      flex-flow: column;
+      margin-bottom: 20px;
+      h2{
+        margin-bottom: 20px;
+      }
+
+      .title {
+        order: -1;
+      }
+      img{
+        margin-bottom: 20px;
+      }
+    }
+    .buyBlock {
+      div {
+        position: relative;
+        padding-top: 20px;
+      }
+    }
+  }
+}

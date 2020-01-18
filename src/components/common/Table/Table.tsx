@@ -13,11 +13,24 @@ interface Props {
   hasControl: boolean;
   orderBy: string;
   isDesc: boolean;
+  hasLink: boolean;
+  linkKey?: string;
+  linkKeyValue?: string;
   onClick: (key: string) => void;
 }
 
 export const Table: React.FC<Props> = props => {
-  const { values, keys, onClick, hasControl, orderBy, isDesc } = props;
+  const {
+    values,
+    keys,
+    onClick,
+    hasControl = false,
+    orderBy,
+    isDesc,
+    hasLink = false,
+    linkKey,
+    linkKeyValue
+  } = props;
   return (
     <table className={styles.table}>
       <TableHeader
@@ -31,7 +44,9 @@ export const Table: React.FC<Props> = props => {
         values={values}
         keys={keys}
         hasControl={hasControl}
-        addLink={true}
+        addLink={hasLink}
+        linkKey={linkKey}
+        linkKeyValue={linkKeyValue}
       />
     </table>
   );
