@@ -23,14 +23,7 @@ export const TableHeader: React.FC<Props> = props => {
   let header: JSX.Element[] = keys.map((header: Key) => {
     let headerText: JSX.Element = <span>{header.name}</span>;
     if (header.key === orderBy) {
-      headerText = (
-        <span
-          onClick={() => onClick(header.key)}
-          className={getClassName(isDesc)}
-        >
-          {header.name}
-        </span>
-      );
+      headerText = <span className={getClassName(isDesc)}>{header.name}</span>;
     }
     return (
       <th onClick={() => onClick(header.key)} key={header.key}>

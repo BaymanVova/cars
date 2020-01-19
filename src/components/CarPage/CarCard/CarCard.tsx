@@ -47,6 +47,7 @@ const CarCard: React.FC<Props> = props => {
           hasLink={true}
           linkKey={"name"}
           linkKeyValue={"id"}
+          idNameInValues={"id"}
         />
       </>
     );

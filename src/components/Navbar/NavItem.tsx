@@ -11,7 +11,6 @@ export const NavItem: React.FC<Props> = props => {
   const { path, children } = props;
   return (
     <NavLink
-      exact
       to={path}
       className={styles.navItem}
       activeClassName={styles.active}

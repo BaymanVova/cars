@@ -13,11 +13,26 @@
   font-size: 16px;
   color: #FFF;
 
+  &+.button {
+    margin-left: 30px;
+  }
 
   &.warning {
-    background-color: #FFB800;
+    background-color: $btn-warning;
     &:hover {
-      background-color: #e2a300;
+      background-color: darken($btn-warning, 4%);
+    }
+  }
+  &.error {
+    background-color: $btn-error;
+    &:hover {
+      background-color: darken( $btn-error, 4%);
+    }
+  }
+  &.success {
+    background-color: $btn-success;
+    &:hover {
+      background-color: darken($btn-success, 4%);
     }
   }
 }

@@ -16,6 +16,7 @@ interface Props {
   hasLink: boolean;
   linkKey?: string;
   linkKeyValue?: string;
+  idNameInValues: string;
   onClick: (key: string) => void;
 }
 
@@ -29,7 +30,8 @@ export const Table: React.FC<Props> = props => {
     isDesc,
     hasLink = false,
     linkKey,
-    linkKeyValue
+    linkKeyValue,
+    idNameInValues
   } = props;
   return (
     <table className={styles.table}>
@@ -47,6 +49,7 @@ export const Table: React.FC<Props> = props => {
         addLink={hasLink}
         linkKey={linkKey}
         linkKeyValue={linkKeyValue}
+        idNameInValues={idNameInValues}
       />
     </table>
   );

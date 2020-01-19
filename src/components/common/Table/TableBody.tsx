@@ -13,14 +13,23 @@ interface Props {
   addLink: boolean;
   linkKey?: string;
   linkKeyValue?: string;
+  idNameInValues: string;
 }
 export const TableBody: React.FC<Props> = props => {
-  const { values, keys, hasControl, addLink, linkKey, linkKeyValue } = props;
+  const {
+    values,
+    keys,
+    hasControl,
+    addLink,
+    linkKey,
+    linkKeyValue,
+    idNameInValues
+  } = props;
   return (
     <tbody>
       {values.map((currentValue: any) => {
         return (
-          <tr key={currentValue.id}>
+          <tr key={currentValue[idNameInValues]}>
             {keys.map((value: Key) => {
               // TODO: переделать проверку
               if (addLink && linkKey) {

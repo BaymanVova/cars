@@ -1,0 +1,11 @@
+@import "../../assets/styles/_variables.scss";
+
+.topMenu {
+  padding: 0 $big-padding;
+  display: flex;
+  margin-bottom: 20px;
+
+  &.right {
+    justify-content: flex-end;
+  }
+}
