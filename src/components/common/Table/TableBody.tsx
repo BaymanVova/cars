@@ -1,10 +1,13 @@
 import React from "react";
 import { TableItem } from "./TableItem";
 import { TableLinkItem } from "./TableLinkItem";
+import styles from "./table.module.scss";
+import { Link, useLocation } from "react-router-dom";
 
 interface Key {
   key: string;
   name: string;
+  render?: (text: any) => void;
 }
 interface Props {
   values: Object[];
@@ -14,8 +17,10 @@ interface Props {
   linkKey?: string;
   linkKeyValue?: string;
   idNameInValues: string;
+  deleteFunc?: (id: string) => void;
 }
 export const TableBody: React.FC<Props> = props => {
+  let location = useLocation();
   const {
     values,
     keys,
@@ -23,7 +28,8 @@ export const TableBody: React.FC<Props> = props => {
     addLink,
     linkKey,
     linkKeyValue,
-    idNameInValues
+    idNameInValues,
+    deleteFunc
   } = props;
   return (
     <tbody>
@@ -44,13 +50,37 @@ export const TableBody: React.FC<Props> = props => {
                 }
               }
               return (
-                <TableItem value={currentValue[value.key]} key={value.key} />
+                <TableItem
+                  value={
+                    value.render
+                      ? value.render(currentValue[value.key])
+                      : currentValue[value.key]
+                  }
+                  key={value.key}
+                />
               );
             })}
             {hasControl && (
               <td>
-                <a href={"#"}>Ред.</a>
-                <a href={"#"}>Удалить</a>
+                <Link
+                  to={`${location.pathname}/edit/${
+                    currentValue[idNameInValues!]
+                  }`}
+                  className={styles.control}
+                >
+                  Ред.
+                </Link>
+                <a
+                  href={"/delete"}
+                  className={styles.control}
+                  onClick={e => {
+                    e.preventDefault();
+                    console.log(deleteFunc, currentValue[idNameInValues!]);
+                    deleteFunc!(currentValue[idNameInValues!]);
+                  }}
+                >
+                  Удалить
+                </a>
               </td>
             )}
           </tr>

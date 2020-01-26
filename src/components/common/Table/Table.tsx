@@ -6,6 +6,7 @@ import styles from "./table.module.scss";
 interface Key {
   key: string;
   name: string;
+  render?: (text: any) => void;
 }
 interface Props {
   values: Object[];
@@ -18,6 +19,8 @@ interface Props {
   linkKeyValue?: string;
   idNameInValues: string;
   onClick: (key: string) => void;
+  deleteFunc?: (id: string) => void;
+  editFunc?: (id: string) => void;
 }
 
 export const Table: React.FC<Props> = props => {
@@ -31,7 +34,8 @@ export const Table: React.FC<Props> = props => {
     hasLink = false,
     linkKey,
     linkKeyValue,
-    idNameInValues
+    idNameInValues,
+    deleteFunc
   } = props;
   return (
     <table className={styles.table}>
@@ -50,6 +54,7 @@ export const Table: React.FC<Props> = props => {
         linkKey={linkKey}
         linkKeyValue={linkKeyValue}
         idNameInValues={idNameInValues}
+        deleteFunc={deleteFunc}
       />
     </table>
   );

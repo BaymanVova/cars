@@ -1,0 +1,106 @@
+@import "./_variables";
+
+.topMenu {
+  padding: 0 $big-padding;
+  display: flex;
+  margin-bottom: 20px;
+
+  &.right {
+    justify-content: flex-end;
+  }
+}
+.headerTitle{
+  font-size: 16px;
+  line-height: 25px;
+  color: $black;
+  opacity: 0.8;
+  background-color: #f7f7f7;
+  border-top: 1px solid #dddede;
+  border-bottom: 1px solid #dddede;
+  padding: 20px $big-padding 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  h4 {
+    display: inline-block;
+    margin: 0;
+  }
+  .add{
+    margin-left: 30px;
+  }
+}
+
+.mainProperty{
+  padding: 0 $big-padding;
+}
+
+.inputGroup {
+  padding-left: $big-padding;
+}
+
+.labelText {
+  font-size: 14px;
+  line-height: 16px;
+  color:  $black;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.add, .remove {
+  width: 25px;
+  height: 25px;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #0258FF;
+  border: 1px solid #0258FF;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.propertiesBox {
+  display: flex;
+  flex-direction: column;
+  padding: 0 $big-padding;
+
+  .propertiesField {
+    display: flex;
+    position: relative;
+
+    > div + div {
+      margin-left: 30px;
+    }
+  }
+  .remove{
+    left: -40px;
+    top: -7px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+.selectValues{
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  padding: 10px 0 10px 350px;
+  margin-bottom: 15px;
+  .valuesField {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .remove {
+     position: initial;
+      margin-left: 30px;
+    }
+  }
+}

@@ -1,14 +1,15 @@
 import * as actionTypes from "../actions/car-actions";
 import { sortTableAsx, sortTableDesc } from "../../assets/utils/sortTable";
+import { LoadState } from "../../assets/utils/loadState";
 
 export interface Property {
-  idProperty: number;
+  idProperty: string;
   nameProperty: string;
   typeProperty: string;
   valueProperty: string | string[];
 }
 export interface CarInfo {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   image: string;
@@ -20,7 +21,7 @@ export interface CarInfo {
 export interface CarState {
   cars: CarInfo[] | null;
   currentCar: CarInfo | null;
-  isLoading: boolean;
+  loadState: LoadState;
   error: string;
   orderBy: string;
   isDesc: boolean;
@@ -29,27 +30,37 @@ export interface CarState {
 const initialState: CarState = {
   cars: null,
   currentCar: null,
-  isLoading: false,
+  loadState: LoadState.needLoad,
   error: "",
   orderBy: "",
   isDesc: true
 };
 
 const getCarsStart = (state: CarState): CarState => {
-  return { ...state, error: "", isLoading: true };
+  return { ...state, error: "", loadState: LoadState.loading };
 };
 
 const getCarsSuccess = (state: CarState, action: any): CarState => {
   return {
     ...state,
     cars: action.payload.cars,
-    isLoading: false,
+    loadState: LoadState.allIsLoaded,
     error: ""
   };
 };
 
 const getCarsFail = (state: CarState, action: any): CarState => {
-  return { ...state, isLoading: false, error: action.payload.error };
+  return { ...state, loadState: LoadState.error, error: action.payload.error };
+};
+
+const addCarsStart = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.loading, error: "" };
+};
+const addCarsSuccess = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.added };
+};
+const addCarsFail = (state: CarState, action: any): CarState => {
+  return { ...state, loadState: LoadState.error, error: action.payload.error };
 };
 
 // Так как FireBase не возвращает (или я не разобрался) данные по ID, я просто ищу среди всего списка
@@ -89,6 +100,12 @@ export const reducer = (
       return getCarsSuccess(state, action);
     case actionTypes.GET_CARS_FAIL:
       return getCarsFail(state, action);
+    case actionTypes.ADD_CARS_START:
+      return addCarsStart(state);
+    case actionTypes.ADD_CARS_SUCCESS:
+      return addCarsSuccess(state);
+    case actionTypes.ADD_CARS_FAIL:
+      return addCarsFail(state, action);
     case actionTypes.GET_CAR_BY_ID:
       return getCarById(state, action);
     case actionTypes.CLEAR_CURRENT_CAR:

@@ -61,7 +61,7 @@ const Registration: React.FC<Props> = props => {
         {formik => (
           <form onSubmit={formik.handleSubmit}>
             <Input
-              name="firstName"
+              id="firstName"
               hasErrors={
                 !!(formik.touched.firstName && formik.errors.firstName)
               }
@@ -73,7 +73,7 @@ const Registration: React.FC<Props> = props => {
               {...formik.getFieldProps("firstName")}
             />
             <Input
-              name="lastName"
+              id="lastName"
               hasErrors={!!(formik.touched.lastName && formik.errors.lastName)}
               errorText={formik.errors.lastName}
               label="Фамилия"
@@ -83,7 +83,7 @@ const Registration: React.FC<Props> = props => {
               {...formik.getFieldProps("lastName")}
             />
             <Input
-              name="login"
+              id="login"
               hasErrors={!!(formik.touched.login && formik.errors.login)}
               errorText={formik.errors.login}
               label="Логин"
@@ -93,7 +93,7 @@ const Registration: React.FC<Props> = props => {
               {...formik.getFieldProps("login")}
             />
             <Input
-              name="password"
+              id="password"
               disabled={false}
               hasErrors={!!(formik.touched.password && formik.errors.password)}
               errorText={formik.errors.password}
@@ -104,7 +104,7 @@ const Registration: React.FC<Props> = props => {
               {...formik.getFieldProps("password")}
             />
             <Input
-              name="confirmPassword"
+              id="confirmPassword"
               disabled={false}
               hasErrors={
                 !!(

@@ -47,4 +47,14 @@
   td:first-child, th:first-child {
     padding-left: $big-padding;
   }
+  .control {
+    font-size: 14px;
+    line-height: 16px;
+    color: #0258FF;
+    opacity: 0.8;
+
+    &+.control {
+      margin-left: 60px;
+    }
+  }
 }

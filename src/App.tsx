@@ -12,7 +12,8 @@ import Logout from "./components/Logout/Logout";
 import { Content } from "./components/common/Content/Content";
 import CarInfo from "./components/CarPage/CarDetail/CarDetail";
 import { Spinner } from "./components/common/Spinner/Spinner";
-import { AddProperty } from "./components/Properties/AddProperty";
+import AddProperty from "./components/Properties/AddProperty";
+import AddCar from "./components/CarPage/AddCar/AddCar";
 
 const App: React.FC = (props: any) => {
   useEffect(() => props.onTryAutoSignup(), []);
@@ -26,9 +27,11 @@ const App: React.FC = (props: any) => {
           <Content>
             <Switch>
               <Route path="/property/add" component={AddProperty} />
+              <Route path="/property/edit/:id" component={AddProperty} />
               <Route path="/property" component={Properties} />
               <Route path="/logout" component={Logout} />
               <Route path={"/car"} exact component={CarCard} />
+              <Route path={"/car/add"} exact component={AddCar} />
               <Route path={"/car/:id"} component={CarInfo} />
               <Redirect to="/car" />
             </Switch>
@@ -41,6 +44,7 @@ const App: React.FC = (props: any) => {
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/signup" exact component={Registration} />
+            <Route path={"/car/:id"} exact component={CarInfo} />
             <Redirect to="/" />
           </Switch>
         </div>

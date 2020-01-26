@@ -8,17 +8,19 @@ import styles from "../car.module.scss";
 import { Input } from "../../UI/Input/Input";
 import DefaultButton from "../../UI/DefaultButton/DefaultButton";
 import { Link } from "react-router-dom";
+import { LoadState } from "../../../assets/utils/loadState";
+import { Spinner } from "../../common/Spinner/Spinner";
 
 interface Props {
   car: CarInfo | null;
-  isLoading: boolean;
+  isLoading: LoadState;
   getCars: () => Promise<any>;
   getCarById: (id: string) => void;
 }
 
 const CarDetail: React.FC<Props> = props => {
   const { car, isLoading, getCars, getCarById } = props;
-  let { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     console.log("useEffect");
@@ -31,7 +33,7 @@ const CarDetail: React.FC<Props> = props => {
         return (
           <div className={styles.property} key={item.idProperty}>
             <Input
-              name={item.idProperty.toString()}
+              id={item.idProperty.toString()}
               hasErrors={false}
               label={item.nameProperty}
               type={item.typeProperty}
@@ -50,9 +52,8 @@ const CarDetail: React.FC<Props> = props => {
     });
   };
 
-  if (isLoading) {
-    console.log("cспинер");
-    return <div>СПИНЕР</div>;
+  if (isLoading === LoadState.loading) {
+    return <Spinner />;
   }
   if (!car) {
     console.log("not found");
@@ -96,7 +97,7 @@ const CarDetail: React.FC<Props> = props => {
 const mapStateToProps = ({ cars }: MapState) => {
   return {
     car: cars.currentCar,
-    isLoading: cars.isLoading
+    isLoading: cars.loadState
   };
 };
 

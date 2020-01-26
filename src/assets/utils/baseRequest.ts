@@ -40,4 +40,38 @@ export class BaseRequest {
       throw error;
     }
   }
+  protected async delete(url: string): Promise<any> {
+    try {
+      const response = await axios.delete(url);
+
+      if (response.status === 401) {
+        console.error("Необходима авторизация");
+      } else if (response.status === 204) {
+        console.error("Ошибка 204");
+      } else if (response.status === 404) {
+        console.error("Ошибка 404");
+      }
+      return response;
+    } catch (error) {
+      console.error("Необработанная ошибка");
+      throw error;
+    }
+  }
+  protected async patch(url: string, config?: any): Promise<any> {
+    try {
+      const response = await axios.patch(url, config);
+
+      if (response.status === 401) {
+        console.error("Необходима авторизация");
+      } else if (response.status === 204) {
+        console.error("Ошибка 204");
+      } else if (response.status === 404) {
+        console.error("Ошибка 404");
+      }
+      return response;
+    } catch (error) {
+      console.error("Необработанная ошибка");
+      throw error;
+    }
+  }
 }

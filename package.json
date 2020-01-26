@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/axios": "^0.14.0",
     "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.149",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
@@ -21,6 +22,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "formik": "^2.0.8",
+    "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
@@ -32,6 +34,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "typescript": "~3.7.2",
+    "uuid": "^3.4.0",
     "yup": "^0.28.0"
   },
   "scripts": {

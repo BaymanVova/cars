@@ -3,10 +3,11 @@
 .inputGroupElements {
   margin-bottom: 15px;
 
-
   .inputBox {
     position: relative;
   }
+}
+
 
   .input {
     background: $white;
@@ -64,7 +65,14 @@
       fill: $border-darkgrey;
     }
   }
-}
+  .radio {
+    font-size: 14px;
+    line-height: 16px;
+    color: $black;
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+
 
 @media (max-width: 400px) {
   .inputGroupElements {

@@ -31,7 +31,7 @@ const Login: React.FC<Props> = props => {
             .email("Введите правильный почтовый адрес")
             .required("Введите логин"),
           password: Yup.string()
-            .min(6, "Must be 6 characters or more")
+            .min(6, "Длинна пароля должна быть больше 6 символов")
             .required("Введите пароль")
         })}
         onSubmit={values => {
@@ -41,7 +41,7 @@ const Login: React.FC<Props> = props => {
         {formik => (
           <form onSubmit={formik.handleSubmit}>
             <Input
-              name="login"
+              id="login"
               hasErrors={!!(formik.touched.login && formik.errors.login)}
               errorText={formik.errors.login}
               label="Логин"
@@ -51,7 +51,7 @@ const Login: React.FC<Props> = props => {
               {...formik.getFieldProps("login")}
             />
             <Input
-              name="password"
+              id="password"
               hasErrors={!!(formik.touched.password && formik.errors.password)}
               errorText={formik.errors.password}
               label="Пароль"

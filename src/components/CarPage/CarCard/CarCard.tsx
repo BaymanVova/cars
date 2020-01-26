@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { MapState } from "../../../store/interfaces/mapState";
 import { CarInfo } from "../../../store/reducers/car-reducers";
 import styles from "../car.module.scss";
+import { Spinner } from "../../common/Spinner/Spinner";
+import { useHistory } from "react-router";
 
 interface Props {
   cars: CarInfo[] | null;
@@ -20,6 +22,11 @@ const CarCard: React.FC<Props> = props => {
     getCars();
   }, []);
 
+  let history = useHistory();
+
+  const renderDate = (text: any) => {
+    return new Date(text).toLocaleDateString();
+  };
   if (cars) {
     return (
       <>
@@ -28,7 +35,7 @@ const CarCard: React.FC<Props> = props => {
             className={"warning"}
             disabled={false}
             onClick={(): void => {
-              alert("Soon");
+              history.push("/car/add");
             }}
             text={"Добавить товар"}
           />
@@ -38,7 +45,11 @@ const CarCard: React.FC<Props> = props => {
           keys={[
             { key: "name", name: "Перечень товаров" },
             { key: "price", name: "Стоимость" },
-            { key: "date", name: "Дата изменения" }
+            {
+              key: "date",
+              name: "Дата изменения",
+              render: renderDate
+            }
           ]}
           onClick={(key: string) => sortCars(key)}
           hasControl
@@ -52,8 +63,7 @@ const CarCard: React.FC<Props> = props => {
       </>
     );
   }
-  // TODO: добавить спинер
-  return <div>спинер</div>;
+  return <Spinner />;
 };
 const mapStateToProps = ({ cars }: MapState) => {
   return {

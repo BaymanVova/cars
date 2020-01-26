@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "../common/Table/Table";
 import * as actions from "../../store/actions/property-actions";
 import { connect } from "react-redux";
@@ -8,14 +8,17 @@ import { Spinner } from "../common/Spinner/Spinner";
 import styles from "./properties.module.scss";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import { useHistory } from "react-router-dom";
+import { LoadState } from "../../assets/utils/loadState";
 
 interface Props {
   properties: Property[] | null;
   error: string;
   orderBy: string;
   isDesc: boolean;
+  loadState: LoadState;
   getProperties: () => void;
   sortProperties: (key: string) => void;
+  deleteProperty: (id: string) => Promise<void>;
 }
 
 const Properties: React.FC<Props> = props => {
@@ -25,15 +28,54 @@ const Properties: React.FC<Props> = props => {
     orderBy,
     isDesc,
     getProperties,
-    sortProperties
+    sortProperties,
+    deleteProperty,
+    loadState
   } = props;
 
-  useEffect(() => getProperties(), []);
+  useEffect(() => {
+    getProperties();
+  }, []);
+
+  const [, SetPageState] = useState(loadState);
+  const [needNotification, setNotification] = useState(false);
+
+  console.log("render", loadState, needNotification, props);
+
+  useEffect(() => {
+    SetPageState(loadState);
+    setNotification(true);
+  }, [loadState]);
+
+  if (needNotification) {
+    switch (loadState) {
+      case LoadState.deleted:
+        alert("Свойство успешно удалено");
+        setNotification(false);
+        break;
+      case LoadState.edited:
+        setNotification(false);
+        break;
+      case LoadState.error:
+        setNotification(false);
+        alert(error);
+        break;
+      default:
+        break;
+    }
+  }
 
   let history = useHistory();
 
+  const delProperty = (id: string) => {
+    deleteProperty(id).then(() => getProperties());
+  };
+
   if (error) {
     return <div>{error}</div>;
+  }
+  if (loadState === LoadState.loading) {
+    return <Spinner />;
   }
   console.log("properties", properties);
   if (properties) {
@@ -55,6 +97,7 @@ const Properties: React.FC<Props> = props => {
           ]}
           onClick={(key: string) => sortProperties(key)}
           hasControl
+          deleteFunc={delProperty}
           orderBy={orderBy}
           isDesc={isDesc}
           hasLink={false}
@@ -71,7 +114,8 @@ const mapStateToProps = ({ properties }: MapState) => {
     properties: properties.properties,
     error: properties.error,
     orderBy: properties.orderBy,
-    isDesc: properties.isDesc
+    isDesc: properties.isDesc,
+    loadState: properties.loadState
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -79,9 +123,8 @@ const mapDispatchToProps = (dispatch: any) => {
     getProperties: () => {
       dispatch(actions.getProperty());
     },
-    sortProperties: (key: string) => {
-      dispatch(actions.sortProperties(key));
-    }
+    sortProperties: (key: string) => dispatch(actions.sortProperties(key)),
+    deleteProperty: (id: string) => dispatch(actions.deleteProperty(id))
   };
 };
 

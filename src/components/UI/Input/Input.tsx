@@ -5,8 +5,10 @@ import { ReactComponent as VisibleIcon } from "./assets/visibility.svg";
 import { ReactComponent as HiddenIcon } from "./assets/visibility_off.svg";
 
 interface Props {
-  name: string;
+  id: string;
+  name?: string;
   className?: string;
+  classNameLabel?: string;
   disabled?: boolean;
   hasErrors: boolean;
   errorText?: string;
@@ -19,8 +21,10 @@ interface Props {
 
 export const Input: React.FC<Props> = props => {
   const {
+    id,
     name,
     className,
+    classNameLabel = "",
     disabled,
     hasErrors,
     errorText,
@@ -47,6 +51,9 @@ export const Input: React.FC<Props> = props => {
 
   const getClassName = (): string => {
     let clazzName = styles.input;
+    if (className) {
+      clazzName += ` ${className}`;
+    }
     if (hasErrors) {
       clazzName += ` ${styles.error}`;
     }
@@ -62,9 +69,14 @@ export const Input: React.FC<Props> = props => {
         newValue.push(value);
       }
       return (
-        <select name="11" id="22">
-          {newValue.map((item: string) => (
-            <option key={item}> {item} </option>
+        <select
+          name={name}
+          id={id}
+          onChange={onChange}
+          className={getClassName()}
+        >
+          {newValue.map((item: string, index: number) => (
+            <option key={`${item}${index}`}>{item}</option>
           ))}
         </select>
       );
@@ -72,7 +84,8 @@ export const Input: React.FC<Props> = props => {
       return (
         <div className={styles.inputBox}>
           <input
-            id={name}
+            id={id}
+            name={name}
             className={getClassName()}
             onChange={onChange}
             type={currentType}
@@ -91,10 +104,12 @@ export const Input: React.FC<Props> = props => {
     }
   };
 
-  console.log("render");
   return (
     <div className={styles.inputGroupElements}>
-      <label htmlFor={name} className={styles.label}>
+      <label
+        htmlFor={id}
+        className={classNameLabel ? classNameLabel : `${styles.label}`}
+      >
         {label}
       </label>
       {input()}
