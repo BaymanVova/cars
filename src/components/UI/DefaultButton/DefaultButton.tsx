@@ -1,28 +1,18 @@
 import React from "react";
 import styles from "./DefaultButton.module.scss";
-
+var classNames = require("classnames");
 interface Props {
   className: string;
   disabled?: boolean;
   onClick?: () => void;
   text: string;
 }
-
-// TODO: прописать интерфейс пропсов
 const DefaultButton: React.FC<Props> = props => {
   const { className, disabled = false, onClick, text } = props;
 
-  const getClassName = (): string => {
-    let clazzName = styles.button;
-    if (className) {
-      clazzName += ` ${styles[className]}`;
-    }
-    return clazzName;
-  };
-
   return (
     <button
-      className={getClassName()}
+      className={classNames(styles.button, { [styles[className]]: className })}
       disabled={disabled}
       type="submit"
       onClick={onClick}

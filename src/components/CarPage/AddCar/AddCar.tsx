@@ -1,5 +1,5 @@
-import React, { useEffect, useState, Fragment } from "react";
-import { Formik, Form, Field, FieldArray } from "formik";
+import React, { Fragment, useEffect, useState } from "react";
+import { Field, FieldArray, Form, Formik } from "formik";
 import { Input } from "../../UI/Input/Input";
 import * as actions from "../../../store/actions/property-actions";
 import * as actionsCar from "../../../store/actions/car-actions";
@@ -9,8 +9,10 @@ import { CarInfo, Property } from "../../../store/reducers/car-reducers";
 import { Spinner } from "../../common/Spinner/Spinner";
 import styles from "../../../assets/styles/addItem.module.scss";
 import DefaultButton from "../../UI/DefaultButton/DefaultButton";
-import { useHistory } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
 import * as Yup from "yup";
+import { LoadState } from "../../../assets/utils/loadState";
+var classNames = require("classnames");
 
 interface Field {
   type: string;
@@ -27,12 +29,28 @@ interface FormState {
 }
 interface Props {
   properties: Property[] | null;
+  loadStateProps: LoadState;
+  loadState: LoadState;
+  error: string;
+  cars: CarInfo[] | null;
   getProperties: () => void;
+  getCars: () => void;
   addCar: (newCar: CarInfo) => void;
+  editCar: (id: string, newCar: CarInfo) => Promise<void>;
 }
 
 const AddCar: React.FC<Props> = props => {
-  const { properties, getProperties, addCar } = props;
+  const {
+    properties,
+    loadStateProps,
+    loadState,
+    error,
+    cars,
+    getProperties,
+    getCars,
+    addCar,
+    editCar
+  } = props;
   const [initialState, setInitialState] = useState<FormState>({
     name: "",
     price: 0,
@@ -42,27 +60,85 @@ const AddCar: React.FC<Props> = props => {
     property: null
   });
 
+  const history = useHistory();
+  let location = useLocation();
+  const { id } = useParams();
+
   useEffect(() => {
+    if (location.pathname.includes("/car/edit")) {
+      getCars();
+    }
     getProperties();
   }, []);
 
   useEffect(() => {
+    console.log("Сменились пропсы или кары");
     if (properties !== null) {
       const tempProp: string[] = properties.map(
         (el: Property) => el.nameProperty
       );
-      setInitialState({
-        name: "",
-        price: 0,
-        image: "",
-        description: "",
-        fields: [],
-        property: tempProp
-      });
+      if (location.pathname.includes("/car/edit")) {
+        if (cars) {
+          console.log("заполнились кары", cars);
+          const currentCar = cars!.find(_ => _.id === id);
+          if (currentCar) {
+            const fieldTemp = currentCar.properties.map((el: Property) => {
+              return {
+                type: el.nameProperty,
+                value: [...el.valueProperty],
+                availableProps: []
+              };
+            });
+            setInitialState({
+              name: currentCar.name,
+              price: currentCar.price,
+              image: currentCar.image,
+              description: currentCar.description,
+              fields: fieldTemp,
+              property: tempProp
+            });
+          }
+        }
+      } else {
+        setInitialState({
+          name: "",
+          price: 0,
+          image: "",
+          description: "",
+          fields: [],
+          property: tempProp
+        });
+      }
     }
-  }, [properties]);
+    console.log("начальное состояние", initialState);
+  }, [properties, cars]);
 
-  const history = useHistory();
+  const [, SetPageState] = useState(loadState);
+  const [needNotification, setNotification] = useState(false);
+
+  useEffect(() => {
+    SetPageState(loadState);
+    setNotification(true);
+  }, [loadState]);
+
+  if (needNotification) {
+    switch (loadState) {
+      case LoadState.added:
+        alert("Товар успешно добавлен");
+        setNotification(false);
+        break;
+      case LoadState.edited:
+        alert("Товар успешно изменен");
+        setNotification(false);
+        break;
+      case LoadState.error:
+        setNotification(false);
+        alert(error);
+        break;
+      default:
+        break;
+    }
+  }
 
   const calcLeftProperty = (values: FormState) => {
     // Все свойства
@@ -71,7 +147,6 @@ const AddCar: React.FC<Props> = props => {
     );
     //Считаем использованные свойства
     let usedProperties: string[] = [];
-    console.log(values.fields);
     if (values.fields) {
       usedProperties = values.fields.map(_ => _.type);
       // Убираем использованные свойства
@@ -80,10 +155,8 @@ const AddCar: React.FC<Props> = props => {
       );
 
       // Добавляем допустимые свойства
-      values.fields.map((el: any, index) => {
-        console.log(`До изменения: ${index}`, el.availableProps);
+      values.fields.map((el: any) => {
         el.availableProps = [el.type, ...leftProperties];
-        console.log(`после изменения: ${index}`, el.availableProps);
       });
     }
 
@@ -111,7 +184,7 @@ const AddCar: React.FC<Props> = props => {
     return values.map((el: string, index: number) => {
       if (index !== 0) {
         return (
-          <div className={styles.valuesField}>
+          <div key={el} className={styles.valuesField}>
             <Input
               id={`fields.${fieldIndex}.value.${index}`}
               hasErrors={false}
@@ -126,7 +199,6 @@ const AddCar: React.FC<Props> = props => {
               type="button"
               onClick={() => {
                 deleteValue(index);
-                console.log("удаляем: ", index);
               }}
             >
               -
@@ -138,7 +210,6 @@ const AddCar: React.FC<Props> = props => {
   };
 
   const getCarProperties = (fields: Field[]): Property[] => {
-    console.log(fields);
     let props: Property[] = [];
     fields.map((el: Field) => {
       const temp = properties!.find(_ => _.nameProperty === el.type);
@@ -155,6 +226,9 @@ const AddCar: React.FC<Props> = props => {
     return props;
   };
 
+  if (loadState === LoadState.loading || loadStateProps === LoadState.loading) {
+    return <Spinner />;
+  }
   if (initialState.property) {
     return (
       <div>
@@ -169,7 +243,6 @@ const AddCar: React.FC<Props> = props => {
             image: Yup.string().required("Добавьте ссылку на изображение")
           })}
           onSubmit={values => {
-            console.log(JSON.stringify(values, null, 2));
             const newCar: CarInfo = {
               name: values.name,
               description: values.description,
@@ -178,13 +251,24 @@ const AddCar: React.FC<Props> = props => {
               date: new Date(),
               properties: getCarProperties(values.fields)
             };
-            console.log("newCar", newCar);
-            addCar(newCar);
+            if (location.pathname.includes("/car/edit")) {
+              editCar(id!, newCar).then(() => getCars());
+              // Необходимо для вызова перерендера Formik
+              setInitialState({
+                name: "",
+                price: 0,
+                image: "",
+                description: "",
+                fields: [],
+                property: null
+              });
+            } else {
+              addCar(newCar);
+            }
           }}
-          render={({ values, handleChange, errors, touched, ...rest }) => (
+          render={({ values, handleChange, errors, touched }) => (
             <Form>
-              {console.log("values", errors, touched, rest)}
-              <div className={`${styles.topMenu} ${styles.right}`}>
+              <div className={classNames(styles.topMenu, styles.right)}>
                 <DefaultButton
                   className={"error"}
                   disabled={false}
@@ -204,10 +288,10 @@ const AddCar: React.FC<Props> = props => {
               <div className={styles.mainProperty}>
                 <Input
                   id="name"
-                  classNameLabel={styles.labelText}
+                  classNameLabel={classNames(styles.labelText, styles.star)}
                   hasErrors={!!(touched.name && errors.name)}
                   errorText={errors.name}
-                  label="Название товара*"
+                  label="Название товара"
                   placeHolder="Введите название"
                   type="text"
                   value={values.name}
@@ -215,10 +299,10 @@ const AddCar: React.FC<Props> = props => {
                 />
                 <Input
                   id="price"
-                  classNameLabel={styles.labelText}
+                  classNameLabel={classNames(styles.labelText, styles.star)}
                   hasErrors={!!(touched.price && errors.price)}
                   errorText={errors.price}
-                  label="Стоимость товара**"
+                  label="Стоимость товара"
                   placeHolder="Введите стоимость"
                   type="text"
                   value={values.price.toString()}
@@ -226,10 +310,10 @@ const AddCar: React.FC<Props> = props => {
                 />
                 <Input
                   id="image"
-                  classNameLabel={styles.labelText}
+                  classNameLabel={classNames(styles.labelText, styles.star)}
                   hasErrors={!!(touched.image && errors.image)}
                   errorText={errors.image}
-                  label="Изображение*"
+                  label="Изображение"
                   placeHolder="Ссылка на изображение"
                   type="text"
                   value={values.image}
@@ -250,22 +334,25 @@ const AddCar: React.FC<Props> = props => {
                 name="fields"
                 render={arrayHelpers => {
                   const leftProperties = calcLeftProperty(values);
-                  console.log(arrayHelpers);
                   return (
                     <>
                       <div className={styles.headerTitle}>
                         <h4>Добавление товару свойств</h4>
-                        {values.fields.length < values.property!.length && (
+                        {(!values.fields ||
+                          values.fields.length < values.property!.length) && (
                           <button
                             className={styles.add}
                             type="button"
                             id={"addPropertyField"}
                             onClick={() => {
-                              arrayHelpers.insert(values.fields.length, {
-                                type: leftProperties[0],
-                                value: [""],
-                                availableProps: leftProperties
-                              });
+                              arrayHelpers.insert(
+                                values.fields ? values.fields.length : 0,
+                                {
+                                  type: leftProperties[0],
+                                  value: [""],
+                                  availableProps: leftProperties
+                                }
+                              );
                             }}
                           >
                             +
@@ -273,22 +360,16 @@ const AddCar: React.FC<Props> = props => {
                         )}
                       </div>
                       <div className={styles.propertiesBox}>
+                        {console.log("values.fields", values.fields)}
                         {values.fields && values.fields.length > 0
                           ? values.fields.map((field, index) => (
                               <Fragment key={field.type}>
-                                {console.log("key", field.type)}
                                 <div className={styles.propertiesField}>
                                   <button
                                     className={styles.remove}
                                     type="button"
                                     onClick={() => {
-                                      console.log(
-                                        "удаляем: ",
-                                        arrayHelpers.form.values.fields,
-                                        index
-                                      );
                                       arrayHelpers.remove(index);
-                                      console.log("удаляем: ", arrayHelpers);
                                     }}
                                   >
                                     -
@@ -335,10 +416,6 @@ const AddCar: React.FC<Props> = props => {
                                       id={"myButton"}
                                       className={styles.add}
                                       onClick={() => {
-                                        console.log(
-                                          "Добавить ещё значений",
-                                          values.fields[index]
-                                        );
                                         const newValues = [
                                           ...values.fields[index].value,
                                           ""
@@ -374,15 +451,22 @@ const AddCar: React.FC<Props> = props => {
   }
 };
 
-const mapStateToProps = ({ properties }: MapState) => {
+const mapStateToProps = ({ properties, cars }: MapState) => {
   return {
-    properties: properties.properties
+    properties: properties.properties,
+    loadStateProps: properties.loadState,
+    loadState: cars.loadState,
+    error: cars.error,
+    cars: cars.cars
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
   return {
     getProperties: () => dispatch(actions.getProperty()),
-    addCar: (newCar: CarInfo) => dispatch(actionsCar.addCar(newCar))
+    getCars: () => dispatch(actionsCar.getCars()),
+    addCar: (newCar: CarInfo) => dispatch(actionsCar.addCar(newCar)),
+    editCar: (id: string, newCar: CarInfo) =>
+      dispatch(actionsCar.editCar(id, newCar))
   };
 };
 

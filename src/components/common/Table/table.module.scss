@@ -3,6 +3,7 @@
 
 .table {
   width: 100%;
+  max-width: 100%;
   th {
     cursor: pointer;
     color: $text-grey;
@@ -46,6 +47,10 @@
   }
   td:first-child, th:first-child {
     padding-left: $big-padding;
+
+    @media (max-width: 700px) {
+      padding-left: 0;
+    }
   }
   .control {
     font-size: 14px;
@@ -55,6 +60,42 @@
 
     &+.control {
       margin-left: 60px;
+      @media (max-width: 700px) {
+        margin-left: 20px;
+      }
     }
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    margin: 0 10px;
+    display: block;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .table td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+
+  .table td:before {
+    content: attr(data-label);
+    float: left;
+    color: $text-grey;
+    font-family: $font;
+    font-size: 16px;
+    line-height: 19px;
+    opacity: 0.8;
   }
 }

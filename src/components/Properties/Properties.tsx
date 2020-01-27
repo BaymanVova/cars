@@ -9,7 +9,7 @@ import styles from "./properties.module.scss";
 import DefaultButton from "../UI/DefaultButton/DefaultButton";
 import { useHistory } from "react-router-dom";
 import { LoadState } from "../../assets/utils/loadState";
-
+var classNames = require("classnames");
 interface Props {
   properties: Property[] | null;
   error: string;
@@ -81,7 +81,7 @@ const Properties: React.FC<Props> = props => {
   if (properties) {
     return (
       <>
-        <div className={`${styles.topMenu} ${styles.right}`}>
+        <div className={classNames(styles.topMenu, styles.right)}>
           <DefaultButton
             className={"warning"}
             disabled={false}

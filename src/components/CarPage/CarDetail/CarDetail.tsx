@@ -27,29 +27,32 @@ const CarDetail: React.FC<Props> = props => {
     getCars().then(() => getCarById(id!));
   }, []);
 
-  const renderProperties = (properties: Property[]): JSX.Element[] => {
-    return properties.map((item: Property) => {
-      if (item.typeProperty === "Dropdown") {
-        return (
-          <div className={styles.property} key={item.idProperty}>
-            <Input
-              id={item.idProperty.toString()}
-              hasErrors={false}
-              label={item.nameProperty}
-              type={item.typeProperty}
-              value={item.valueProperty}
-            />
-          </div>
-        );
-      } else {
-        return (
-          <div key={item.idProperty} className={styles.property}>
-            <p className={styles.propertyHeader}>{item.nameProperty}</p>
-            <p className={styles.propertyData}>{item.valueProperty}</p>
-          </div>
-        );
-      }
-    });
+  const renderProperties = (properties: Property[]): React.ReactNode => {
+    console.log("properties", properties);
+    if (properties) {
+      return properties.map((item: Property) => {
+        if (item.typeProperty === "Dropdown") {
+          return (
+            <div className={styles.property} key={item.idProperty}>
+              <Input
+                id={item.idProperty.toString()}
+                hasErrors={false}
+                label={item.nameProperty}
+                type={item.typeProperty}
+                value={item.valueProperty}
+              />
+            </div>
+          );
+        } else {
+          return (
+            <div key={item.idProperty} className={styles.property}>
+              <p className={styles.propertyHeader}>{item.nameProperty}</p>
+              <p className={styles.propertyData}>{item.valueProperty}</p>
+            </div>
+          );
+        }
+      });
+    } else return null;
   };
 
   if (isLoading === LoadState.loading) {

@@ -6,7 +6,7 @@ export interface Property {
   idProperty: string;
   nameProperty: string;
   typeProperty: string;
-  valueProperty: string | string[];
+  valueProperty: string[];
 }
 export interface CarInfo {
   id?: string;
@@ -63,6 +63,27 @@ const addCarsFail = (state: CarState, action: any): CarState => {
   return { ...state, loadState: LoadState.error, error: action.payload.error };
 };
 
+const deleteCarStart = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.loading, error: "" };
+};
+
+const deleteCarSuccess = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.deleted, error: "" };
+};
+const deleteCarFail = (state: CarState, action: any): CarState => {
+  return { ...state, loadState: LoadState.error, error: action.payload.error };
+};
+
+const editCarsStart = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.loading, error: "" };
+};
+const editCarsSuccess = (state: CarState): CarState => {
+  return { ...state, loadState: LoadState.edited, error: "" };
+};
+const editCarsFail = (state: CarState, action: any): CarState => {
+  return { ...state, loadState: LoadState.error, error: action.payload.error };
+};
+
 // Так как FireBase не возвращает (или я не разобрался) данные по ID, я просто ищу среди всего списка
 const getCarById = (state: CarState, action: any): CarState => {
   const curCar = state.cars?.find(_ => _.id == action.payload.id) || null;
@@ -106,6 +127,18 @@ export const reducer = (
       return addCarsSuccess(state);
     case actionTypes.ADD_CARS_FAIL:
       return addCarsFail(state, action);
+    case actionTypes.EDIT_CARS_START:
+      return editCarsStart(state);
+    case actionTypes.EDIT_CARS_SUCCESS:
+      return editCarsSuccess(state);
+    case actionTypes.EDIT_CARS_FAIL:
+      return editCarsFail(state, action);
+    case actionTypes.DELETE_CARS_START:
+      return deleteCarStart(state);
+    case actionTypes.DELETE_CARS_SUCCESS:
+      return deleteCarSuccess(state);
+    case actionTypes.DELETE_CARS_FAIL:
+      return deleteCarFail(state, action);
     case actionTypes.GET_CAR_BY_ID:
       return getCarById(state, action);
     case actionTypes.CLEAR_CURRENT_CAR:

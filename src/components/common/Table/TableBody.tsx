@@ -37,11 +37,11 @@ export const TableBody: React.FC<Props> = props => {
         return (
           <tr key={currentValue[idNameInValues]}>
             {keys.map((value: Key) => {
-              // TODO: переделать проверку
               if (addLink && linkKey) {
                 if (value.key === linkKey) {
                   return (
                     <TableLinkItem
+                      valueHeader={value.name}
                       value={currentValue[value.key]}
                       key={value.key}
                       link={currentValue[linkKeyValue!]}
@@ -51,6 +51,7 @@ export const TableBody: React.FC<Props> = props => {
               }
               return (
                 <TableItem
+                  valueHeader={value.name}
                   value={
                     value.render
                       ? value.render(currentValue[value.key])
@@ -61,7 +62,7 @@ export const TableBody: React.FC<Props> = props => {
               );
             })}
             {hasControl && (
-              <td>
+              <td data-label={"Управление"}>
                 <Link
                   to={`${location.pathname}/edit/${
                     currentValue[idNameInValues!]

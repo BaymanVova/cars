@@ -4,6 +4,8 @@ import styles from "./input.module.scss";
 import { ReactComponent as VisibleIcon } from "./assets/visibility.svg";
 import { ReactComponent as HiddenIcon } from "./assets/visibility_off.svg";
 
+var classNames = require("classnames");
+
 interface Props {
   id: string;
   name?: string;
@@ -38,26 +40,9 @@ export const Input: React.FC<Props> = props => {
 
   const [currentType, setType] = useState(type);
 
-  // // TODO: тип события?
-  // const onChangeHandler = (e: any): void => {
-  //   setError(false);
-  //   onChange(e);
-  // };
-
   const showHide = (): void => {
     const nextType = currentType === "password" ? "text" : "password";
     setType(nextType);
-  };
-
-  const getClassName = (): string => {
-    let clazzName = styles.input;
-    if (className) {
-      clazzName += ` ${className}`;
-    }
-    if (hasErrors) {
-      clazzName += ` ${styles.error}`;
-    }
-    return clazzName;
   };
 
   const input = () => {
@@ -73,7 +58,10 @@ export const Input: React.FC<Props> = props => {
           name={name}
           id={id}
           onChange={onChange}
-          className={getClassName()}
+          className={classNames(styles.input, {
+            className: className,
+            [styles.error]: hasErrors
+          })}
         >
           {newValue.map((item: string, index: number) => (
             <option key={`${item}${index}`}>{item}</option>
@@ -86,7 +74,10 @@ export const Input: React.FC<Props> = props => {
           <input
             id={id}
             name={name}
-            className={getClassName()}
+            className={classNames(styles.input, {
+              className: className,
+              [styles.error]: hasErrors
+            })}
             onChange={onChange}
             type={currentType}
             disabled={disabled}
@@ -106,10 +97,7 @@ export const Input: React.FC<Props> = props => {
 
   return (
     <div className={styles.inputGroupElements}>
-      <label
-        htmlFor={id}
-        className={classNameLabel ? classNameLabel : `${styles.label}`}
-      >
+      <label htmlFor={id} className={classNames(classNameLabel, styles.label)}>
         {label}
       </label>
       {input()}

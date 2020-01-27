@@ -13,6 +13,7 @@ import { MapState } from "../../store/interfaces/mapState";
 import { LoadState } from "../../assets/utils/loadState";
 import { Spinner } from "../common/Spinner/Spinner";
 import { Property } from "../../store/reducers/car-reducers";
+var classNames = require("classnames");
 
 interface Props {
   loadState: LoadState;
@@ -38,6 +39,7 @@ const AddProperty: React.FC<Props> = props => {
     SetPageState(loadState);
     setNotification(true);
   }, [loadState]);
+
   if (needNotification) {
     switch (loadState) {
       case LoadState.added:
@@ -91,10 +93,10 @@ const AddProperty: React.FC<Props> = props => {
         <div className={styles.inputGroup}>
           <Input
             id="name"
-            classNameLabel={styles.labelText}
+            classNameLabel={classNames(styles.labelText, styles.star)}
             hasErrors={!!(formik.touched.name && formik.errors.name)}
             errorText={formik.errors.name}
-            label="Название свойства*"
+            label="Название свойства"
             placeHolder="Введите свойство"
             type="text"
             value={formik.values.name}
@@ -102,8 +104,8 @@ const AddProperty: React.FC<Props> = props => {
           />
           <RadioButtonGroup
             id="typeProperty"
-            label="Укажите тип свойства*"
-            classNameLabel={styles.labelText}
+            label="Укажите тип свойства"
+            classNameLabel={classNames(styles.labelText, styles.star)}
             value={formik.values.typeProperty}
             error={formik.errors.typeProperty}
             touched={formik.touched.typeProperty}
@@ -159,18 +161,11 @@ const AddProperty: React.FC<Props> = props => {
               values.name = "";
               values.typeProperty = "";
             });
-
-            // axios
-            //   .patch(
-            //     "https://caronline-f2f9e.firebaseio.com/properties/-Lz3ubJVP0M3I91ngEeq.json",
-            //     newProp
-            //   )
-            //   .then((response: any) => console.log(response));
           }}
         >
           {formik => (
             <form onSubmit={formik.handleSubmit}>
-              <div className={`${styles.topMenu} ${styles.right}`}>
+              <div className={classNames(styles.topMenu, styles.right)}>
                 <DefaultButton
                   className={"error"}
                   disabled={false}

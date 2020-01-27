@@ -12,6 +12,14 @@ export const ADD_CARS_START = "ADD_CARS_START";
 export const ADD_CARS_SUCCESS = "ADD_CARS_SUCCESS";
 export const ADD_CARS_FAIL = "ADD_CARS_FAIL";
 
+export const DELETE_CARS_START = "DELETE_CARS_START";
+export const DELETE_CARS_SUCCESS = "DELETE_CARS_SUCCESS";
+export const DELETE_CARS_FAIL = "DELETE_CARS_FAIL";
+
+export const EDIT_CARS_START = "EDIT_CARS_START";
+export const EDIT_CARS_SUCCESS = "EDIT_CARS_SUCCESS";
+export const EDIT_CARS_FAIL = "EDIT_CARS_FAIL";
+
 export const GET_CAR_BY_ID = "GET_CAR_BY_ID";
 export const CLEAR_CURRENT_CAR = "CLEAR_CURRENT_CAR";
 
@@ -63,6 +71,47 @@ const addCarFail = (error: string) => {
     }
   };
 };
+
+const editCarsStart = () => {
+  return {
+    type: EDIT_CARS_START
+  };
+};
+
+const editCarSuccess = () => {
+  return {
+    type: EDIT_CARS_SUCCESS
+  };
+};
+const editCarFail = (error: string) => {
+  return {
+    type: EDIT_CARS_FAIL,
+    payload: {
+      error
+    }
+  };
+};
+
+const deleteCarStart = () => {
+  return {
+    type: DELETE_CARS_START
+  };
+};
+const deleteCarSuccess = () => {
+  return {
+    type: DELETE_CARS_SUCCESS
+  };
+};
+
+const deleteCarFail = (error: string) => {
+  return {
+    type: DELETE_CARS_FAIL,
+    payload: {
+      error
+    }
+  };
+};
+
 export const getCarById = (id: string) => {
   return {
     type: GET_CAR_BY_ID,
@@ -94,10 +143,9 @@ export const getCars = (): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
       dispatch(getCarsStart());
       const carAPI: CarsAPIRequest = new CarsAPIRequest();
       const carState = await carAPI.getAll();
-      console.log(carState);
       dispatch(getCarsSuccess(carState));
     } catch (e) {
-      console.log(e);
+      console.error(e);
       dispatch(getCarsFail(e.message));
     }
   };
@@ -111,11 +159,44 @@ export const addCar = (
       dispatch(addCarsStart(car));
       const carAPI: CarsAPIRequest = new CarsAPIRequest();
       const response: APIResponse = await carAPI.add(car);
-      console.log("response", response);
       dispatch(addCarSuccess());
     } catch (error) {
-      console.log("response-error", error);
+      console.error("response-error", error);
       dispatch(addCarFail(error));
+    }
+  };
+};
+
+export const deleteCar = (
+  id: string
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+    try {
+      dispatch(deleteCarStart());
+      const carAPI: CarsAPIRequest = new CarsAPIRequest();
+      const response: APIResponse = await carAPI.delete(id);
+      dispatch(deleteCarSuccess());
+    } catch (error) {
+      console.error("response-error", error);
+      dispatch(deleteCarFail(error));
+    }
+  };
+};
+
+export const editCar = (
+  id: string,
+  car: CarInfo
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+    try {
+      dispatch(editCarsStart());
+      const carAPI: CarsAPIRequest = new CarsAPIRequest();
+      const response: APIResponse = await carAPI.edit(id, car);
+      console.log("response", response);
+      dispatch(editCarSuccess());
+    } catch (error) {
+      console.log("response-error", error);
+      dispatch(editCarFail(error));
     }
   };
 };

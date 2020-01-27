@@ -19,6 +19,10 @@ a {
 
   &.right {
     justify-content: flex-end;
+
+    @media (max-width: 500px) {
+      justify-content: center;
+    }
   }
  }
 

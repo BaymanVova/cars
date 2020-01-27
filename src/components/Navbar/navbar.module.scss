@@ -8,6 +8,10 @@
   margin-right: auto;
   max-width: 1110px;
   margin-bottom: 15px;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .navItem {
@@ -21,6 +25,17 @@
   border-top: solid 2px transparent;
   box-sizing: border-box;
 
+  @media (max-width: 700px) {
+      padding: 20px 10px 10px;
+  }
+  @media (max-width: 500px){
+    font-size: 20px;
+    line-height: 20px;
+    padding: 7px 10px 7px;
+    width: 100%;
+    text-align: center;
+  }
+
   &.active, &:hover {
     background: linear-gradient(180deg, rgba(2, 88, 255, 0.1) 0%, rgba(2, 88, 255, 0.01) 100%);
     border-top: solid 2px $blue;
@@ -28,3 +43,5 @@
   }
 
 }
+
+
