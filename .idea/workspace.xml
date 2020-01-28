@@ -2,35 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CarPage/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Properties/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Spinner/spinner.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/styles/addItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/addItem.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/utils/carsAPIRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/utils/carsAPIRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/utils/sortTable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/utils/sortTable.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CarPage/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/CarCard/CarCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CarPage/CarDetail/CarDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/CarDetail/CarDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CarPage/car.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/car.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Properties/AddProperty.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/AddProperty.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Properties/properties.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/properties.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Spinner/Spinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Spinner/Spinner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableLinkItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableLinkItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Table/table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/table.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/car-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/car-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/car-reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/car-reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +119,7 @@
       <workItem from="1578836921403" duration="25061000" />
       <workItem from="1579197084823" duration="64026000" />
       <workItem from="1579708908791" duration="36888000" />
-      <workItem from="1580046494440" duration="39246000" />
+      <workItem from="1580046494440" duration="43867000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -201,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580070030740</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added page with edit Car and adaptive css">
+      <created>1580160428759</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1580160428759</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +211,8 @@
     <MESSAGE value="added Car details" />
     <MESSAGE value="added Property Page" />
     <MESSAGE value="added page with add Car" />
-    <option name="LAST_COMMIT_MESSAGE" value="added page with add Car" />
+    <MESSAGE value="added page with edit Car and adaptive css" />
+    <option name="LAST_COMMIT_MESSAGE" value="added page with edit Car and adaptive css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

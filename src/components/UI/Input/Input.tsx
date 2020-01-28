@@ -68,6 +68,20 @@ export const Input: React.FC<Props> = props => {
           ))}
         </select>
       );
+    } else if (type === "area") {
+      return (
+        <div className={styles.inputBox}>
+          <textarea
+            name={name}
+            id={id}
+            onChange={onChange}
+            className={classNames(styles.textarea, styles.input, {
+              className: className,
+              [styles.error]: hasErrors
+            })}
+          ></textarea>
+        </div>
+      );
     } else {
       return (
         <div className={styles.inputBox}>

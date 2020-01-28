@@ -9,6 +9,11 @@
 }
 
 
+.textarea {
+  width: 100% !important;
+  max-width: 540px;
+  height: 112px;
+}
   .input {
     background: $white;
     border: 1px solid $border-grey;

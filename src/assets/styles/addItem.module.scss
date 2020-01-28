@@ -34,11 +34,17 @@
   }
   .add{
     margin-left: 30px;
+    @media (max-width: 350px) {
+      margin-left: 2px;
+    }
   }
 }
 
 .mainProperty{
   padding: 0 $big-padding;
+  @media (max-width: 600px) {
+    padding: 0 15px;
+  }
 }
 
 .inputGroup {
@@ -85,6 +91,10 @@
   flex-direction: column;
   padding: 0 $big-padding;
 
+  @media (max-width: 600px) {
+    padding: 0 15px;
+  }
+
   .propertiesField {
     display: flex;
     position: relative;
@@ -92,6 +102,24 @@
     > div + div {
       margin-left: 30px;
     }
+    @media (max-width: 900px) {
+      flex-wrap: wrap;
+
+      > div {
+        flex-basis: 100%;
+      }
+      > div + div {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+       .remove + div>label {
+         margin-left: 35px;
+       }
+    }
+
+
   }
   .remove{
     left: -40px;
@@ -99,6 +127,10 @@
     position: absolute;
     width: 25px;
     height: 25px;
+
+    @media (max-width: 600px) {
+      left: 0;
+    }
   }
 }
 
@@ -116,6 +148,16 @@
     .remove {
      position: initial;
       margin-left: 30px;
+
+      @media (max-width: 600px) {
+        position: absolute;
+        left: initial;
+        right: 5px;
+        top: 13px;
+      }
     }
+  }
+  @media (max-width: 900px) {
+    padding-left: 0;
   }
 }
