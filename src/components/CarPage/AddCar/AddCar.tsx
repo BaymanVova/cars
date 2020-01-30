@@ -80,7 +80,7 @@ const AddCar: React.FC<Props> = props => {
       if (location.pathname.includes("/car/edit")) {
         if (cars) {
           console.log("заполнились кары", cars);
-          const currentCar = cars!.find(_ => _.id === id);
+          const currentCar = cars.find(_ => _.id === id);
           if (currentCar) {
             const fieldTemp = currentCar.properties.map((el: Property) => {
               return {
@@ -116,7 +116,13 @@ const AddCar: React.FC<Props> = props => {
   const [needNotification, setNotification] = useState(false);
 
   useEffect(() => {
-    setNotification(true);
+    if (
+      loadState === LoadState.added ||
+      loadState === LoadState.edited ||
+      loadState === LoadState.error
+    ) {
+      setNotification(true);
+    }
   }, [loadState]);
 
   if (needNotification) {

@@ -42,7 +42,9 @@ const Properties: React.FC<Props> = props => {
   console.log("render", loadState, needNotification, props);
 
   useEffect(() => {
-    setNotification(true);
+    if (loadState === LoadState.deleted || loadState === LoadState.error) {
+      setNotification(true);
+    }
   }, [loadState]);
 
   if (needNotification) {

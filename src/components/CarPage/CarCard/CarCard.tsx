@@ -43,7 +43,9 @@ const CarCard: React.FC<Props> = props => {
   const [needNotification, setNotification] = useState(false);
 
   useEffect(() => {
-    setNotification(true);
+    if (loadState === LoadState.deleted || loadState === LoadState.error) {
+      setNotification(true);
+    }
   }, [loadState]);
 
   if (needNotification) {

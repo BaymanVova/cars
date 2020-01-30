@@ -119,7 +119,7 @@
       <workItem from="1578836921403" duration="25061000" />
       <workItem from="1579197084823" duration="64026000" />
       <workItem from="1579708908791" duration="36888000" />
-      <workItem from="1580046494440" duration="46118000" />
+      <workItem from="1580046494440" duration="47190000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -198,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580417389353</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="change needNotification">
+      <created>1580418981771</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580418981771</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +235,8 @@
     <MESSAGE value="added page with edit Car and adaptive css" />
     <MESSAGE value="adaptive css" />
     <MESSAGE value="fixed the error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the error" />
+    <MESSAGE value="change needNotification" />
+    <option name="LAST_COMMIT_MESSAGE" value="change needNotification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -243,7 +251,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx</url>
-          <line>229</line>
+          <line>231</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>

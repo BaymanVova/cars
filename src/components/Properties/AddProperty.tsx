@@ -35,7 +35,13 @@ const AddProperty: React.FC<Props> = props => {
   //** Для оповещений, при изменении статуса стора**//
   const [needNotification, setNotification] = useState(false);
   useEffect(() => {
-    setNotification(true);
+    if (
+      loadState === LoadState.added ||
+      loadState === LoadState.edited ||
+      loadState === LoadState.error
+    ) {
+      setNotification(true);
+    }
   }, [loadState]);
 
   if (needNotification) {
