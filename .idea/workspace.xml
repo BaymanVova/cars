@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styles/addItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles/addItem.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +116,7 @@
       <workItem from="1578836921403" duration="25061000" />
       <workItem from="1579197084823" duration="64026000" />
       <workItem from="1579708908791" duration="36888000" />
-      <workItem from="1580046494440" duration="43867000" />
+      <workItem from="1580046494440" duration="44981000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -184,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580160428759</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="adaptive css">
+      <created>1580239797753</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1580239797753</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +216,8 @@
     <MESSAGE value="added Property Page" />
     <MESSAGE value="added page with add Car" />
     <MESSAGE value="added page with edit Car and adaptive css" />
-    <option name="LAST_COMMIT_MESSAGE" value="added page with edit Car and adaptive css" />
+    <MESSAGE value="adaptive css" />
+    <option name="LAST_COMMIT_MESSAGE" value="adaptive css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -224,6 +229,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.tsx</url>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx</url>
+          <line>231</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

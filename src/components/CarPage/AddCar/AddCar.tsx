@@ -184,7 +184,7 @@ const AddCar: React.FC<Props> = props => {
     return values.map((el: string, index: number) => {
       if (index !== 0) {
         return (
-          <div key={`${el}-${index}`} className={styles.valuesField}>
+          <div key={index} className={styles.valuesField}>
             <Input
               id={`fields.${fieldIndex}.value.${index}`}
               hasErrors={false}
