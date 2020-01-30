@@ -37,13 +37,11 @@ const Properties: React.FC<Props> = props => {
     getProperties();
   }, []);
 
-  const [, SetPageState] = useState(loadState);
   const [needNotification, setNotification] = useState(false);
 
   console.log("render", loadState, needNotification, props);
 
   useEffect(() => {
-    SetPageState(loadState);
     setNotification(true);
   }, [loadState]);
 
@@ -57,8 +55,8 @@ const Properties: React.FC<Props> = props => {
         setNotification(false);
         break;
       case LoadState.error:
-        setNotification(false);
         alert(error);
+        setNotification(false);
         break;
       default:
         break;

@@ -113,11 +113,9 @@ const AddCar: React.FC<Props> = props => {
     console.log("начальное состояние", initialState);
   }, [properties, cars]);
 
-  const [, SetPageState] = useState(loadState);
   const [needNotification, setNotification] = useState(false);
 
   useEffect(() => {
-    SetPageState(loadState);
     setNotification(true);
   }, [loadState]);
 
@@ -132,8 +130,8 @@ const AddCar: React.FC<Props> = props => {
         setNotification(false);
         break;
       case LoadState.error:
-        setNotification(false);
         alert(error);
+        setNotification(false);
         break;
       default:
         break;

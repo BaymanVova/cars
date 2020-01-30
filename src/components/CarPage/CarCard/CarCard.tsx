@@ -40,11 +40,9 @@ const CarCard: React.FC<Props> = props => {
 
   let history = useHistory();
 
-  const [, SetPageState] = useState(loadState);
   const [needNotification, setNotification] = useState(false);
 
   useEffect(() => {
-    SetPageState(loadState);
     setNotification(true);
   }, [loadState]);
 
@@ -54,12 +52,9 @@ const CarCard: React.FC<Props> = props => {
         alert("Товар успешно удален");
         setNotification(false);
         break;
-      case LoadState.edited:
-        setNotification(false);
-        break;
       case LoadState.error:
-        setNotification(false);
         alert(error);
+        setNotification(false);
         break;
       default:
         break;

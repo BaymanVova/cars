@@ -33,10 +33,8 @@ const AddProperty: React.FC<Props> = props => {
   }, []);
 
   //** Для оповещений, при изменении статуса стора**//
-  const [, SetPageState] = useState(loadState);
   const [needNotification, setNotification] = useState(false);
   useEffect(() => {
-    SetPageState(loadState);
     setNotification(true);
   }, [loadState]);
 
