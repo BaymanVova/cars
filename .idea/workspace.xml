@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
+    <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="Code refactoring">
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/Area.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Input/Dropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Table/HeaderItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CarPage/CarCard/CarCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/CarCard/CarCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarPage/CarDetail/CarDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/CarDetail/CarDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarPage/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarPage/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Logout/Logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/NavItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Properties/AddProperty.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/AddProperty.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/Properties.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Properties/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Properties/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registration/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/DefaultButton/DefaultButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/RadioButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/RadioButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Input/input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input/assets/input.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Content/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Content/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Table/TableHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,9 +40,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="SCSS File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -64,11 +83,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\React\cars\src\components\UI\Input\assets" />
+      <recent name="D:\Projects\React\cars\src\components\UI\Input" />
+      <recent name="D:\Projects\React\cars\src\components\UI\style" />
+      <recent name="D:\Projects\React\cars\src\components\UI" />
       <recent name="D:\Projects\React\cars\src\components\CarPage" />
-      <recent name="D:\Projects\React\cars\src\components\common\Table\assets" />
-      <recent name="D:\Projects\React\cars\src\assets\images" />
-      <recent name="D:\Projects\React\cars\src\components" />
-      <recent name="D:\Projects\React\cars\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -119,7 +138,7 @@
       <workItem from="1578836921403" duration="25061000" />
       <workItem from="1579197084823" duration="64026000" />
       <workItem from="1579708908791" duration="36888000" />
-      <workItem from="1580046494440" duration="47190000" />
+      <workItem from="1580046494440" duration="54119000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -205,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580418981771</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="change needNotification">
+      <created>1580420025883</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580420025884</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +262,8 @@
     <MESSAGE value="adaptive css" />
     <MESSAGE value="fixed the error" />
     <MESSAGE value="change needNotification" />
-    <option name="LAST_COMMIT_MESSAGE" value="change needNotification" />
+    <MESSAGE value="Code refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -248,12 +275,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.tsx</url>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/CarPage/AddCar/AddCar.tsx</url>
-          <line>231</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

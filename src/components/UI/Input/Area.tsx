@@ -1,8 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./assets/input.module.scss";
-
-import { ReactComponent as VisibleIcon } from "./assets/visibility.svg";
-import { ReactComponent as HiddenIcon } from "./assets/visibility_off.svg";
 
 var classNames = require("classnames");
 
@@ -16,12 +13,11 @@ interface Props {
   errorText?: string;
   label: string;
   placeHolder?: string;
-  type: string;
-  value: string | string[];
+  value: string;
   onChange?: (e: any) => void;
 }
 
-export const Input: React.FC<Props> = props => {
+export const Area: React.FC<Props> = props => {
   const {
     id,
     name,
@@ -30,20 +26,11 @@ export const Input: React.FC<Props> = props => {
     disabled,
     hasErrors,
     errorText,
-    placeHolder = "",
     label = "",
-    type = "text",
+    placeHolder,
     value,
-    onChange = () => {},
-    ...rest
+    onChange = () => {}
   } = props;
-
-  const [currentType, setType] = useState(type);
-
-  const showHide = (): void => {
-    const nextType = currentType === "password" ? "text" : "password";
-    setType(nextType);
-  };
 
   return (
     <div className={styles.inputGroupElements}>
@@ -51,25 +38,18 @@ export const Input: React.FC<Props> = props => {
         {label}
       </label>
       <div className={styles.inputBox}>
-        <input
-          id={id}
+        <textarea
           name={name}
-          className={classNames(styles.input, {
+          id={id}
+          placeholder={placeHolder}
+          onChange={onChange}
+          className={classNames(styles.textarea, styles.input, {
             className: className,
             [styles.error]: hasErrors
           })}
-          onChange={onChange}
-          type={currentType}
           disabled={disabled}
           value={value}
-          placeholder={placeHolder}
-          {...rest}
         />
-        {type === "password" && (
-          <div className={styles.visibility} onClick={showHide} role="button">
-            {currentType === "password" ? <VisibleIcon /> : <HiddenIcon />}
-          </div>
-        )}
       </div>
       {hasErrors ? <span className={styles.errorText}>{errorText}</span> : null}
     </div>

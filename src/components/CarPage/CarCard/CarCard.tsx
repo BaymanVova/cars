@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DefaultButton from "../../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../../UI/DefaultButton/DefaultButton";
 import { Table } from "../../common/Table/Table";
 import * as actions from "../../../store/actions/car-actions";
 import { connect } from "react-redux";
@@ -22,7 +22,7 @@ interface Props {
   getCars: () => void;
   deleteCar: (id: string) => Promise<void>;
 }
-const CarCard: React.FC<Props> = props => {
+const CarCardPage: React.FC<Props> = props => {
   const {
     cars,
     sortCars,
@@ -63,7 +63,7 @@ const CarCard: React.FC<Props> = props => {
     }
   }
 
-  const renderDate = (text: any) => {
+  const renderDate = (text: string) => {
     return new Date(text).toLocaleDateString();
   };
 
@@ -129,4 +129,7 @@ const mapDispatchToProps = (dispatch: any) => {
     deleteCar: (id: string) => dispatch(actions.deleteCar(id))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(CarCard);
+export const CarCard = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CarCardPage);

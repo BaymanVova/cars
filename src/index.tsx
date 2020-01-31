@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import App from "./App";
+import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { reducer as authReducer } from "./store/reducers/auth-reducers";
 import { reducer as carsReducer } from "./store/reducers/car-reducers";

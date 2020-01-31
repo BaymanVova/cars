@@ -37,14 +37,14 @@ export const TableBody: React.FC<Props> = props => {
         return (
           <tr key={currentValue[idNameInValues]}>
             {keys.map((value: Key) => {
-              if (addLink && linkKey) {
+              if (addLink && linkKey && linkKeyValue) {
                 if (value.key === linkKey) {
                   return (
                     <TableLinkItem
                       valueHeader={value.name}
                       value={currentValue[value.key]}
                       key={value.key}
-                      link={currentValue[linkKeyValue!]}
+                      link={currentValue[linkKeyValue]}
                     />
                   );
                 }
@@ -76,8 +76,9 @@ export const TableBody: React.FC<Props> = props => {
                   className={styles.control}
                   onClick={e => {
                     e.preventDefault();
-                    console.log(deleteFunc, currentValue[idNameInValues!]);
-                    deleteFunc!(currentValue[idNameInValues!]);
+                    if (deleteFunc) {
+                      deleteFunc(currentValue[idNameInValues!]);
+                    }
                   }}
                 >
                   Удалить

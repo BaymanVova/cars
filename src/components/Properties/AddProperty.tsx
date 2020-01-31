@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../UI/DefaultButton/DefaultButton";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../UI/Input/Input";
@@ -23,7 +23,7 @@ interface Props {
   add: (property: newProperty) => Promise<void>;
   edit: (id: string, property: newProperty) => Promise<void>;
 }
-const AddProperty: React.FC<Props> = props => {
+const AddPropertyPage: React.FC<Props> = props => {
   const { loadState, error, add, getProperty, properties, edit } = props;
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const AddProperty: React.FC<Props> = props => {
   const [currentName, setName] = useState("");
   const [currentType, setType] = useState("");
 
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   //** Получить значения редактируемого объекта**//
   useEffect(() => {
     if (id) {
@@ -81,7 +81,7 @@ const AddProperty: React.FC<Props> = props => {
         }
       }
     }
-  }, [properties]);
+  }, [properties, id]);
 
   const history = useHistory();
 
@@ -209,4 +209,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddProperty);
+export const AddProperty = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddPropertyPage);

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Input } from "../UI/Input/Input";
 import styles from "./login.module.scss";
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../UI/DefaultButton/DefaultButton";
 import * as actions from "../../store/actions/auth-actions";
 import { MapState } from "../../store/interfaces/mapState";
 
@@ -14,7 +14,7 @@ interface Props {
   onAuth: (email: string, password: string) => void;
 }
 
-const Login: React.FC<Props> = props => {
+const LoginPage: React.FC<Props> = props => {
   const { error, onAuth } = props;
 
   return (
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export const Login = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

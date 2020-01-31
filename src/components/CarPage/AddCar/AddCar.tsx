@@ -8,10 +8,12 @@ import { MapState } from "../../../store/interfaces/mapState";
 import { CarInfo, Property } from "../../../store/reducers/car-reducers";
 import { Spinner } from "../../common/Spinner/Spinner";
 import styles from "../../../assets/styles/addItem.module.scss";
-import DefaultButton from "../../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../../UI/DefaultButton/DefaultButton";
 import { useHistory, useLocation, useParams } from "react-router";
 import * as Yup from "yup";
 import { LoadState } from "../../../assets/utils/loadState";
+import { DropDown } from "../../UI/Input/Dropdown";
+import { Area } from "../../UI/Input/Area";
 var classNames = require("classnames");
 
 interface Field {
@@ -39,7 +41,7 @@ interface Props {
   editCar: (id: string, newCar: CarInfo) => Promise<void>;
 }
 
-const AddCar: React.FC<Props> = props => {
+const AddCarPage: React.FC<Props> = props => {
   const {
     properties,
     loadStateProps,
@@ -62,7 +64,7 @@ const AddCar: React.FC<Props> = props => {
 
   const history = useHistory();
   let location = useLocation();
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     if (location.pathname.includes("/car/edit")) {
@@ -323,13 +325,12 @@ const AddCar: React.FC<Props> = props => {
                   value={values.image}
                   onChange={handleChange}
                 />
-                <Input
+                <Area
                   id="description"
                   classNameLabel={styles.labelText}
                   hasErrors={false}
                   label="Описание"
                   placeHolder="Описание товара"
-                  type="area"
                   value={values.description}
                   onChange={handleChange}
                 />
@@ -378,12 +379,11 @@ const AddCar: React.FC<Props> = props => {
                                   >
                                     -
                                   </button>
-                                  <Input
+                                  <DropDown
                                     id={`fields.${index}.type`}
                                     name={`fields.${index}.type`}
                                     hasErrors={false}
                                     label={`Свойство ${index + 1}`}
-                                    type={"Dropdown"}
                                     value={values.fields[index].availableProps}
                                     onChange={handleChange}
                                   />
@@ -473,4 +473,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddCar);
+export const AddCar = connect(mapStateToProps, mapDispatchToProps)(AddCarPage);

@@ -6,7 +6,7 @@ import * as actions from "../../store/actions/auth-actions";
 interface Props {
   onLogout: () => void;
 }
-const Logout: React.FC<Props> = props => {
+const LogoutPage: React.FC<Props> = props => {
   const { onLogout } = props;
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Logout);
+export const Logout = connect(null, mapDispatchToProps)(LogoutPage);

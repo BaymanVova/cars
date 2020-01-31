@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "./input.module.scss";
+import styles from "./assets/input.module.scss";
 
 interface RadioButtonGroupProps {
   id?: string;
-  children: React.ReactNode;
   error?: string;
   label: string;
   classNameLabel: string;

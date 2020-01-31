@@ -7,7 +7,7 @@ interface Props {
   onClick?: () => void;
   text: string;
 }
-const DefaultButton: React.FC<Props> = props => {
+export const DefaultButton: React.FC<Props> = props => {
   const { className, disabled = false, onClick, text } = props;
 
   return (
@@ -21,5 +21,3 @@ const DefaultButton: React.FC<Props> = props => {
     </button>
   );
 };
-
-export default DefaultButton;

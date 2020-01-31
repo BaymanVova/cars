@@ -1,6 +1,7 @@
 import React from "react";
+import { HeaderItem } from "./HeaderItem";
 import styles from "./table.module.scss";
-var classNames = require("classnames");
+
 interface Key {
   key: string;
   name: string;
@@ -14,26 +15,16 @@ interface Props {
 }
 export const TableHeader: React.FC<Props> = props => {
   const { keys, onClick, hasControl, orderBy, isDesc } = props;
-  let header: JSX.Element[] = keys.map((header: Key) => {
-    let headerText: JSX.Element = <span>{header.name}</span>;
-    if (header.key === orderBy) {
-      headerText = (
-        <span
-          className={classNames(
-            styles.active,
-            isDesc ? styles.desc : styles.asc
-          )}
-        >
-          {header.name}
-        </span>
-      );
-    }
-    return (
-      <th onClick={() => onClick(header.key)} key={header.key}>
-        {headerText}
-      </th>
-    );
-  });
+  let header: JSX.Element[] = keys.map((header: Key) => (
+    <HeaderItem
+      keyValue={header.key}
+      name={header.name}
+      orderBy={orderBy}
+      isDesc={isDesc}
+      onClick={onClick}
+      key={header.key}
+    />
+  ));
   return (
     <thead>
       <tr>

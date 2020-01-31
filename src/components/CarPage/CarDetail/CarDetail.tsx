@@ -5,11 +5,11 @@ import { useParams } from "react-router";
 import { connect } from "react-redux";
 import { CarInfo, Property } from "../../../store/reducers/car-reducers";
 import styles from "../car.module.scss";
-import { Input } from "../../UI/Input/Input";
-import DefaultButton from "../../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../../UI/DefaultButton/DefaultButton";
 import { Link } from "react-router-dom";
 import { LoadState } from "../../../assets/utils/loadState";
 import { Spinner } from "../../common/Spinner/Spinner";
+import { DropDown } from "../../UI/Input/Dropdown";
 
 interface Props {
   car: CarInfo | null;
@@ -18,14 +18,13 @@ interface Props {
   getCarById: (id: string) => void;
 }
 
-const CarDetail: React.FC<Props> = props => {
+const CarDetailPage: React.FC<Props> = props => {
   const { car, isLoading, getCars, getCarById } = props;
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    console.log("useEffect");
-    getCars().then(() => getCarById(id!));
-  }, []);
+    getCars().then(() => getCarById(id));
+  }, [id]);
 
   const renderProperties = (properties: Property[]): React.ReactNode => {
     console.log("properties", properties);
@@ -34,11 +33,10 @@ const CarDetail: React.FC<Props> = props => {
         if (item.typeProperty === "Dropdown") {
           return (
             <div className={styles.property} key={item.idProperty}>
-              <Input
+              <DropDown
                 id={item.idProperty.toString()}
                 hasErrors={false}
                 label={item.nameProperty}
-                type={item.typeProperty}
                 value={item.valueProperty}
               />
             </div>
@@ -111,4 +109,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarDetail);
+export const CarDetail = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CarDetailPage);

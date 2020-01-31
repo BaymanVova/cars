@@ -2,22 +2,27 @@ import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "./store/actions/auth-actions";
-import Login from "./components/Login/Login";
+import { Login } from "./components/Login/Login";
 import styles from "./App.module.scss";
 import { Navbar } from "./components/Navbar/Navbar";
-import Registration from "./components/Registration/Registration";
-import Logout from "./components/Logout/Logout";
+import { Registration } from "./components/Registration/Registration";
+import { Logout } from "./components/Logout/Logout";
 import { Content } from "./components/common/Content/Content";
 import { Spinner } from "./components/common/Spinner/Spinner";
 import { AddProperty, Properties } from "./components/Properties";
 import { AddCar, CarCard, CarDetail } from "./components/CarPage";
 
-const App: React.FC = (props: any) => {
-  useEffect(() => props.onTryAutoSignup(), []);
-
+interface Props {
+  isInit: boolean;
+  isAuth: boolean;
+  onTryAutoSignup: () => void;
+}
+const AppPage: React.FC<Props> = props => {
+  useEffect(() => onTryAutoSignup(), []);
+  const { isInit, isAuth, onTryAutoSignup } = props;
   console.log("App");
-  if (props.isInit) {
-    if (props.isAuth) {
+  if (isInit) {
+    if (isAuth) {
       return (
         <div>
           <Navbar />
@@ -63,4 +68,4 @@ const mapStateToProps = (state: any) => {
     isInit: state.auth.initialized
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppPage);

@@ -4,7 +4,6 @@ import styles from "./navbar.module.scss";
 
 interface Props {
   path: string;
-  children: JSX.Element | JSX.Element[] | string;
 }
 
 export const NavItem: React.FC<Props> = props => {

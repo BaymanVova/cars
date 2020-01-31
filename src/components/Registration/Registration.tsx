@@ -4,9 +4,10 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Input } from "../UI/Input/Input";
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../UI/DefaultButton/DefaultButton";
 import * as actions from "../../store/actions/auth-actions";
 import styles from "../Login/login.module.scss";
+import { MapState } from "../../store/interfaces/mapState";
 
 interface Props {
   error: string | null;
@@ -17,7 +18,7 @@ interface Props {
     password: string
   ) => void;
 }
-const Registration: React.FC<Props> = props => {
+const RegistrationPage: React.FC<Props> = props => {
   const { error, onRegistration } = props;
   return (
     <div className={styles.login}>
@@ -131,9 +132,9 @@ const Registration: React.FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = ({ auth }: MapState) => {
   return {
-    error: state.auth.error
+    error: auth.error
   };
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -149,4 +150,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export const Registration = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegistrationPage);

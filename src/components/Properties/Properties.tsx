@@ -6,7 +6,7 @@ import { MapState } from "../../store/interfaces/mapState";
 import { Property } from "../../store/reducers/car-reducers";
 import { Spinner } from "../common/Spinner/Spinner";
 import styles from "./properties.module.scss";
-import DefaultButton from "../UI/DefaultButton/DefaultButton";
+import { DefaultButton } from "../UI/DefaultButton/DefaultButton";
 import { useHistory } from "react-router-dom";
 import { LoadState } from "../../assets/utils/loadState";
 var classNames = require("classnames");
@@ -21,7 +21,7 @@ interface Props {
   deleteProperty: (id: string) => Promise<void>;
 }
 
-const Properties: React.FC<Props> = props => {
+const PropertiesPage: React.FC<Props> = props => {
   const {
     properties,
     error,
@@ -128,4 +128,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Properties);
+export const Properties = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PropertiesPage);
