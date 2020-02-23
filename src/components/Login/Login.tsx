@@ -45,7 +45,7 @@ const LoginPage: React.FC<Props> = props => {
               hasErrors={!!(formik.touched.login && formik.errors.login)}
               errorText={formik.errors.login}
               label="Логин"
-              placeHolder="Введите логин"
+              placeHolder="admin@gmail.com"
               type="text"
               value={formik.values.login}
               {...formik.getFieldProps("login")}
@@ -55,7 +55,7 @@ const LoginPage: React.FC<Props> = props => {
               hasErrors={!!(formik.touched.password && formik.errors.password)}
               errorText={formik.errors.password}
               label="Пароль"
-              placeHolder="Введите пароль"
+              placeHolder="123456"
               type="password"
               value={formik.values.password}
               {...formik.getFieldProps("password")}
