@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b746cd30-a577-49db-aeb4-e43d9c894987" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Procfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +22,7 @@
         <option value="CSS File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -60,11 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\React\cars" />
       <recent name="D:\Projects\React\cars\src\components\UI\Input\assets" />
       <recent name="D:\Projects\React\cars\src\components\UI\Input" />
       <recent name="D:\Projects\React\cars\src\components\UI\style" />
       <recent name="D:\Projects\React\cars\src\components\UI" />
-      <recent name="D:\Projects\React\cars\src\components\CarPage" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,7 +120,7 @@
       <workItem from="1579708908791" duration="36888000" />
       <workItem from="1580046494440" duration="54908000" />
       <workItem from="1581888055349" duration="1255000" />
-      <workItem from="1582455344806" duration="2561000" />
+      <workItem from="1582455344806" duration="3514000" />
     </task>
     <task id="LOCAL-00001" summary="added baseRequest, some TS.">
       <created>1579026791111</created>
@@ -224,7 +227,21 @@
       <option name="project" value="LOCAL" />
       <updated>1582458139317</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="for deploy">
+      <created>1582458647012</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1582458647012</updated>
+    </task>
+    <task id="LOCAL-00017" summary="for deploy">
+      <created>1582458704694</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1582458704694</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
